@@ -1,5 +1,8 @@
-
-
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Departments;
+DROP TABLE IF EXISTS Agents;
+DROP TABLE IF EXISTS Tickets;
+DROP TABLE IF EXISTS FAQs;
 
 CREATE TABLE Users (
     id_user INTEGER PRIMARY KEY,
@@ -43,35 +46,23 @@ CREATE TABLE FAQs (
     answer TEXT NOT NULL
 );
 
-INSERT INTO Users
-VALUES (
-    1, 'Amanda Silva', 'amandasilva02', '...', 'amandasilva@xyz.com', 'admin'
-    2, 'João Miranda', 'joaom2211', '...', 'joaomiranda@xyz.com', 'admin'
-    3, 'Maria Beatriz Carneiro', 'beacarneiro058', '...', 'beatrizcarneiro@xyz.com', 'admin'
-    4, 'Sérgio Conceição', 'sergiofcp1893', '...', 'sergioconceicao@xyz.com', 'agent'
-    5, 'Rúben Amorim', 'rubenscp1906', '...', 'rubenamorim@xyz.com', 'client'
-    6, 'Roger Schmidt', 'rogerslb1904', '...', 'rogerschimdt@xyz.com', 'client'
-);
+INSERT INTO Users VALUES(1, 'Amanda Silva', 'amandasilva02', '...', 'amandasilva@xyz.com', 'admin');
+INSERT INTO Users VALUES(2, 'João Miranda', 'joaom2211', '...', 'joaomiranda@xyz.com', 'admin');
+INSERT INTO Users VALUES(3, 'Maria Beatriz Carneiro', 'beacarneiro058', '...', 'beatrizcarneiro@xyz.com', 'admin');
+INSERT INTO Users VALUES(4, 'Sérgio Conceição', 'sergiofcp1893', '...', 'sergioconceicao@xyz.com', 'agent');
+INSERT INTO Users VALUES(5, 'Rúben Amorim', 'rubenscp1906', '...', 'rubenamorim@xyz.com', 'client');
+INSERT INTO Users VALUES(6, 'Roger Schmidt', 'rogerslb1904', '...', 'rogerschimdt@xyz.com', 'client');
 
-INSERT INTO Departments
-VALUES (
-    1, 'Accounting'
-    2, 'Technical Support'
-    3, 'Billing'
-    4, 'Sales'
-    5, 'Customer Service'
-    6, 'General'
-);
+INSERT INTO Departments VALUES(1, 'Accounting');
+INSERT INTO Departments VALUES(2, 'Technical Support');
+INSERT INTO Departments VALUES(3, 'Billing');
+INSERT INTO Departments VALUES(4, 'Sales');
+INSERT INTO Departments VALUES(5, 'Customer Service');
+INSERT INTO Departments VALUES(6, 'General');
 
-INSERT INTO Agents
-VALUES (
-    4, 2
-    4, 5
-    4, 6
-);
+INSERT INTO Agents VALUES(4, 2);
+INSERT INTO Agents VALUES(4, 5);
+INSERT INTO Agents VALUES(4, 6);
 
-INSERT INTO Tickets
-VALUES (
-    5, 2, 'opened', 'normal', '#techsupport'
-    6, 6, 'opened', 'urgent', '#general'
-);
+INSERT INTO Tickets VALUES(5, 2, 'opened', 'normal', '#techsupport');
+INSERT INTO Tickets VALUES(6, 6, 'opened', 'urgent', '#general');
