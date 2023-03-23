@@ -1,8 +1,5 @@
-DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Departments;
-DROP TABLE IF EXISTS Agents;
-DROP TABLE IF EXISTS Tickets;
-DROP TABLE IF EXISTS FAQs;
+
+
 
 CREATE TABLE Users (
     id_user INTEGER PRIMARY KEY,
@@ -23,7 +20,7 @@ CREATE TABLE Agents (
     id_user INTEGER NOT NULL,
     id_department INTEGER NOT NULL,
     FOREIGN KEY (id_user) REFERENCES Users(id_user),
-    FOREIGN KEY (id_department) REFERENCES Departments(id_department),
+    FOREIGN KEY (id_department) REFERENCES Departments(id_department)
 );
 
 CREATE TABLE Tickets (
@@ -37,7 +34,7 @@ CREATE TABLE Tickets (
     hashtag TEXT NOT NULL,
     FOREIGN KEY (id_user) REFERENCES Users(id_user),
     FOREIGN KEY (id_department) REFERENCES Departments(id_department),
-    FOREIGN KEY id_assigned_agent REFERENCES Agents(id_agent)
+    FOREIGN KEY (id_assigned_agent) REFERENCES Agents(id_agent)
 );
 
 CREATE TABLE FAQs (
@@ -46,3 +43,35 @@ CREATE TABLE FAQs (
     answer TEXT NOT NULL
 );
 
+INSERT INTO Users
+VALUES (
+    1, 'Amanda Silva', 'amandasilva02', '...', 'amandasilva@xyz.com', 'admin'
+    2, 'João Miranda', 'joaom2211', '...', 'joaomiranda@xyz.com', 'admin'
+    3, 'Maria Beatriz Carneiro', 'beacarneiro058', '...', 'beatrizcarneiro@xyz.com', 'admin'
+    4, 'Sérgio Conceição', 'sergiofcp1893', '...', 'sergioconceicao@xyz.com', 'agent'
+    5, 'Rúben Amorim', 'rubenscp1906', '...', 'rubenamorim@xyz.com', 'client'
+    6, 'Roger Schmidt', 'rogerslb1904', '...', 'rogerschimdt@xyz.com', 'client'
+);
+
+INSERT INTO Departments
+VALUES (
+    1, 'Accounting'
+    2, 'Technical Support'
+    3, 'Billing'
+    4, 'Sales'
+    5, 'Customer Service'
+    6, 'General'
+);
+
+INSERT INTO Agents
+VALUES (
+    4, 2
+    4, 5
+    4, 6
+);
+
+INSERT INTO Tickets
+VALUES (
+    5, 2, 'opened', 'normal', '#techsupport'
+    6, 6, 'opened', 'urgent', '#general'
+);
