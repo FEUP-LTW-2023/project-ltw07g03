@@ -12,8 +12,7 @@ body {
 .container {
 	margin: 10px auto;
 	max-width: 350px;
-	padding: 20px;
-	padding-bottom: 40px;
+	padding: 20px 20px 40px;
 	border-radius: 5px;
 }
 
@@ -48,8 +47,7 @@ input[type=submit]:not(.newlogin) {
 	padding: 10px;
 	border-radius: 5px;
 	cursor: pointer;
-	font-family: Poppins;
-	font-weight: 600;
+	font: 600 1em Poppins;
 	margin-bottom: 20px;
 }
 
@@ -65,7 +63,7 @@ input[type=submit]:hover:not(.newlogin) {
 	padding: 10px;
 	border-radius: 5px;
 	cursor: pointer;
-	font-family: Poppins;
+	font: 600 1em Poppins;
 	font-weight: 600;
 }
 
@@ -92,8 +90,7 @@ address {
 	margin-top: 110px;
 	text-align: center;
 	padding: 16px;
-	font-size: 13px;
-	font-weight: 500;
+	font: 500 0.9em Poppins;
 }
 
 address span {

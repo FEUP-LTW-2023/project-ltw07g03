@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -30,3 +34,7 @@
     </address>
 </footer>
 </html>
+
+<?php
+
+?>
