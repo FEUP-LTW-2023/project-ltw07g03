@@ -19,17 +19,10 @@ body {
 h1 {
 	text-align: left;
 	margin-bottom: 20px;
-	margin-top:3px;
+	margin-top:5px;
 	padding: 8px;
-	font: 600 2.5em Poppins;
+	font-weight: 600;
 	color: #393737;
-}
-
-.text-eyebrow{
-	text-align: left;
-	color: #807b7b;
-	padding:8px;
-	font: 500 0.8em Poppins;
 }
 
 form {
@@ -37,7 +30,7 @@ form {
 	flex-direction: column;
 }
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password] {
 	padding: 10px;
 	border-radius: 5px;
 	border: none;
@@ -83,17 +76,6 @@ input[type=submit]:hover:not(.newlogin) {
 	margin:2px ;
 }
 
-.text-caption {
-	text-align: left;
-	color: #807b7b;
-	padding:8px;
-	font: 430 0.7em Poppins;
-}
-
-.text-caption a{
-	color: #4e4b4b;
-}
-
 footer {
 	display: flex;
 	justify-content: center;
@@ -105,7 +87,7 @@ footer, footer a {
 }
 
 address {
-	margin-top: 85px;
+	margin-top: 110px;
 	text-align: center;
 	padding: 16px;
 	font: 500 0.9em Poppins;
