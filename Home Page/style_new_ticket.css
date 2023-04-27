@@ -30,7 +30,7 @@ form {
 	flex-direction: column;
 }
 
-input[type=text], input[type=password], input[type=email], textarea[type=text] {
+input[type=text], input[type=password], input[type=email], textarea[type=text], select, option {
 	padding: 10px;
 	border-radius: 5px;
 	border: none;
@@ -38,6 +38,7 @@ input[type=text], input[type=password], input[type=email], textarea[type=text] {
 	font-family: Poppins;
 	background-color: #e9e8e8;
 	box-shadow:2px 2px #c0c0c2;
+	color: #737375
 }
 
 input[type=submit]:not(.newlogin) {
@@ -54,4 +55,3 @@ input[type=submit]:not(.newlogin) {
 input[type=submit]:hover:not(.newlogin) {
 	background-color:#3252b5;
 }
-
