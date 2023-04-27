@@ -45,11 +45,12 @@
             <table>
                 <tr>
                     <th>Id</th>
-                    <th>User</th>
+                    <th>Nome</th>
                     <th>Departamento</th>
                     <th>Data</th>
-                    <th>Status</th>
+                    <th>Estado</th>
                     <th>Prioridade</th>
+                    <th></th>
                 </tr>
                 <tr class="selected">
                     <td>5</td>
@@ -58,6 +59,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>6</td>
@@ -66,6 +68,7 @@
                     <td>há 5 dias</td>
                     <td>Aberto</td>
                     <td>Urgente</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -74,6 +77,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -82,6 +86,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -90,6 +95,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -98,6 +104,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -106,6 +113,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -114,6 +122,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -122,6 +131,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -130,6 +140,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -138,6 +149,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -146,6 +158,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -154,6 +167,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -162,6 +176,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -170,6 +185,7 @@
                     <td>há 3 dias</td>
                     <td>Aberto</td>
                     <td>Normal</td>
+                    <td><button class="edit-button"><img src="editar.png" alt="Editar"></button></td>
                 </tr>
             </table>
             <p>15 Tickets</p>
