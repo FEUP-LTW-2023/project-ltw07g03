@@ -18,7 +18,7 @@
 	<div class="container">
 		<h1>Iniciar Sessão</h1>
 		<form>
-			<input type="text" id="username" name="username" placeholder="Nome de Usuário" required>
+			<input type="text" id="username" name="username" placeholder="Utilizador" required>
 			<input type="password" id="password" name="password" placeholder="Palavra-passe" required>
 			<input type="submit" value="Login">
 		<div class="divider"></div>
