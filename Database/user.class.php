@@ -52,6 +52,42 @@
         $stmt->execute(array($name, $username, password_hash($pwd, PASSWORD_DEFAULT), $email));
     }
 
+    function checkUser($username, $pwd) {
+        global $db;
+
+        $query =  'SELECT * FROM 
+                   Users WHERE 
+                   username = ?';
+
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($username));
+        $user = $stmt->fetch();
+
+        if (password_verify ( $pwd, $user["Password"])) 
+            return TRUE;
+
+        else 
+            return FALSE;
+    }
+
+    function checkUsername($username) {
+        global $db;
+
+        $query =  'SELECT * FROM 
+                   Users WHERE 
+                   Username = ?';
+
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($username));
+        $user = $stmt->fetch();
+
+        if ($user) 
+            return TRUE;
+            
+        else 
+            return FALSE;
+    }
+
     function changeUsername($oldusername, $newUsername){
         global $db;
 
