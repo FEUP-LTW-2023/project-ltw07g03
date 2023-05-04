@@ -90,7 +90,7 @@
         return 2;
     }
 
-    function changeName($oldEmail, $newEmail){
+    function changeEmail($oldEmail, $newEmail){
         global $db;
 
         $query = 'SELECT * FROM Users WHERE email = ?';
