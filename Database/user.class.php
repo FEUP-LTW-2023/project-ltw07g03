@@ -70,7 +70,45 @@
         }
         return 2;
     }
-    
+
+    function changeName($oldName, $newName){
+        global $db;
+
+        $query = 'SELECT * FROM Users WHERE name = ?';
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($newName));
+        $probs = $stmt->fetchAll();
+
+        if($oldName != $newName){
+            if(count($probs) == 0){
+                $stmt->prepare('UPDATE Users SET name = ? WHERE name = ?');
+                $stmt->execute(array($oldName, $newName));
+                return 0;
+            }
+            return 1;  
+        }
+        return 2;
+    }
+
+    function changeName($oldEmail, $newEmail){
+        global $db;
+
+        $query = 'SELECT * FROM Users WHERE email = ?';
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($newEmail));
+        $probs = $stmt->fetchAll();
+
+        if($oldEmail != $newEmail){
+            if(count($probs) == 0){
+                $stmt->prepare('UPDATE Users SET email = ? WHERE email = ?');
+                $stmt->execute(array($oldEmail, $newEmail));
+                return 0;
+            }
+            return 1;  
+        }
+        return 2;
+    }
+       
 
     function changePwd($username, $oldPwd, $newPwd){
         global $db; 
