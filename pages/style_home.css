@@ -1,0 +1,221 @@
+/* Nav Bar */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf9f9;
+    color: #fff;
+    padding: 10px;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+	width: max(50px, 15vw);
+	padding: 0.4rem;
+	cursor: pointer;
+}
+
+#txtSearch{
+    float:left;
+    background-color:transparent;
+    font-style:italic;
+    font-size:15px;
+    border:none;
+    height:30px;
+    width:800px;
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+.search {
+    border:solid 1px;
+    border-radius:15px;
+    border-color: #c0c0c2;
+}
+  
+nav .user {
+    display: flex;
+    align-items: center;
+}
+  
+nav .user img {
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+  
+nav .user .username {
+    font-weight: bold;
+    color: black;
+    width: 90px;
+}
+
+/* Nav Bar */
+
+
+/* Geral */
+
+body {
+	font-family: Poppins, sans-serif;
+	background-color: #fdf9f9;
+}
+
+p {
+    text-align: left;
+}
+
+/* Geral */
+
+
+/* Button Group */
+
+.btn-group button {
+    padding: 10px;
+    margin: 0%;
+	border: none;
+    border-radius: 0%;
+	box-shadow:2px 2px #c0c0c2;
+    color: black;
+    font-size:15px;
+    cursor: pointer;
+    width: 100%;
+    display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  
+.btn-group button:first-child {
+    background-color: #e9e8e8;
+    font-weight: bold;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+.btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group button:hover {
+    background-color: #e9e8e8; /* Add a background color on hover */
+}
+
+/* Button Group */
+
+
+/* Table */
+
+table {
+    margin-left: 10px;
+    padding-right: 50px;
+    font-size:15px;
+    border-collapse: collapse;
+    width: 98%;
+}
+
+.selected {
+    background-color: #e9e8e8;
+}
+
+tr, td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    font-size: larger;
+}
+
+tr:hover {
+    background-color: #e9e8e8;
+}
+
+/* Table */
+
+
+/* Grid */
+
+.grid-container {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    background-color: #fdf9f9;
+    grid-template-columns: 0.6fr 2.8fr 0.6fr 0.05fr;
+}
+  
+.grid-container > div {
+    background-color: #fdf9f9;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 15px;
+}
+
+/* Grid */
+
+
+/* Button */
+
+button {
+    padding: 20px;
+    margin-bottom: 18px;
+	border: none;
+	box-shadow:2px 2px #c0c0c2;
+    color: black;
+    font-size:15px;
+    cursor: pointer;
+    width: 95%;
+    border-radius: 50px;
+    font-size: larger;
+}
+  
+button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+button:hover {
+    background-color: #e9e8e8; /* Add a background color on hover */
+}
+
+/* Button */
+
+
+/* Card */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+/* Card */
+
+
+/* Edit Button */
+.item-2 button {
+    padding: 0%;
+    margin: 0%;
+    width: 0%;
+}  
+
+
+  .edit-button img {
+    display: block;
+    height: 20px;
+    width: 20px;
+  }  
+
+/* Edit Button */
+

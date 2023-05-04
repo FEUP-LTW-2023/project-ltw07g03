@@ -1,0 +1,57 @@
+#logo {
+	width: max(80px, 18vw);
+	padding: 0.4rem;
+	cursor: pointer;
+}
+
+body {
+	font-family: Poppins, sans-serif;
+	background-color: #fdf9f9;
+}
+
+.container {
+	margin: 10px auto;
+	max-width: 350px;
+	padding: 20px 20px 40px;
+	border-radius: 5px;
+}
+
+h1 {
+	text-align: left;
+	margin-bottom: 20px;
+	margin-top:3px;
+	padding: 8px;
+	font: 600 2.5em Poppins;
+	color: #393737;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+input[type=text], input[type=password], input[type=email], textarea[type=text], select, option {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	margin-bottom: 20px;
+	font-family: Poppins;
+	background-color: #e9e8e8;
+	box-shadow:2px 2px #c0c0c2;
+	color: #737375
+}
+
+input[type=submit]:not(.newlogin) {
+	background-color: #4169E1;
+	color: #f7f4f4;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	font: 600 1em Poppins;
+	margin-bottom: 20px;
+}
+
+input[type=submit]:hover:not(.newlogin) {
+	background-color:#3252b5;
+}

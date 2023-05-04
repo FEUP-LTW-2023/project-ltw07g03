@@ -17,6 +17,6 @@
         header('Location: ../index.php')
     }
     else{
-        header('Location: ../HomePage/home_page.php')
+        header('Location: ../pages/home_page.php')
     }
 ?>
