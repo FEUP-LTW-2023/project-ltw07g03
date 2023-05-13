@@ -6,7 +6,7 @@
         public string $pwd;
         public string $email;
         public string $category;
-    }
+    
 
     public function __construct(int $id_user, string $name, string $username, string $pwd, string $email, string $category){
         $this->id_user = $id_user;
@@ -17,32 +17,18 @@
         $this->category = $category;
     }
 
-    function getUser($username) {
+    static function getUser($id) {
         global $db;
 
         $query = 'SELECT * FROM
                   Users WHERE  
-                  username = ?';
+                  id_user = ?';
 
         $stmt = $db->prepare($query);
-        $stmt->execute(array($username));
+        $stmt->execute(array($id));
         $user = $stmt->fetch();
 
         return $user;
-    }
-
-    function getUserId($username) {
-        global $db;
-
-        $query = 'SELECT id_user FROM
-                  Users WHERE
-                  username = ?';
-
-        $stmt = $db->prepare($query);
-        $stmt->execute(array($username));
-        $idUser = $stmt->fetch()["id_user"];
-
-        return $idUser;
     }
 
     function addUser($name, $username, $pwd, $email){
@@ -50,6 +36,42 @@
 
         $stmt = $db->prepare('INSERT INTO Users VALUES (?, ?, ?, ?, ?, ?)');
         $stmt->execute(array($name, $username, password_hash($pwd, PASSWORD_DEFAULT), $email));
+    }
+
+    static function checkUser($username, $pwd,$db) {
+    
+        $query =  'SELECT * FROM 
+                   Users WHERE 
+                   username = ?';
+
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($username));
+        $user = $stmt->fetch();
+
+        if (password_verify( $pwd, $user["pwd"])) {
+            return TRUE;
+        }
+
+        else {return FALSE;}
+            
+    }
+
+    function checkUsername($username) {
+        global $db;
+
+        $query =  'SELECT * FROM 
+                   Users WHERE 
+                   Username = ?';
+
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($username));
+        $user = $stmt->fetch();
+
+        if ($user) 
+            return TRUE;
+            
+        else 
+            return FALSE;
     }
 
     function changeUsername($oldusername, $newUsername){
@@ -108,7 +130,7 @@
         }
         return 2;
     }
-       
+    
 
     function changePwd($username, $oldPwd, $newPwd){
         global $db; 
@@ -130,4 +152,7 @@
         return 2;
     }
 
+  }
+
 ?> 
+
