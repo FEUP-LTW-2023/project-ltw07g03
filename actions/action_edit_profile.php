@@ -1,13 +1,16 @@
+
+<!-- Não está a funcionar ainda-->
+
 <?php
   declare(strict_types = 1);
 
-  require_once(__DIR__ . '/../database/session.php');
+  require_once(__DIR__ . '/../utils/session.php');
   $session = new Session();
 
   if (!$session->isLoggedIn()) die(header('Location: /'));
 
-  require_once(__DIR__ . '/../database/connection.db.php');
-  require_once(__DIR__ . '/../database/user.class.php');
+  require_once(__DIR__ . '/../Database/connection.db.php');
+  require_once(__DIR__ . '/../Database/user.class.php');
 
   $db = getDatabaseConnection();
 
@@ -52,5 +55,5 @@
     $session->setUsername($user->username());
   }
 
-  header('Location: ../pages/home_page.php');
+  header('Location: ../pages/edit_profile.php');
 ?>

@@ -37,9 +37,9 @@
     //   $_SESSION['id'] = $id;
     // }
 
-    // public function setName(string $name) {
-    //   $_SESSION['name'] = $name;
-    // }
+    public function setName(string $name) {
+      $_SESSION['name'] = $name;
+    }
 
   }
 ?>

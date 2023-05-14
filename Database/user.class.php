@@ -17,28 +17,27 @@
         $this->category = $category;
     }
 
-    static function getUser($id) {
-        global $db;
+    // static function getUser($id) {
+    //     global $db;
 
-        $query = 'SELECT * FROM
-                  Users WHERE  
-                  id_user = ?';
+    //     $query = 'SELECT * FROM
+    //               Users WHERE  
+    //               id_user = ?';
 
-        $stmt = $db->prepare($query);
-        $stmt->execute(array($id));
-        $user = $stmt->fetch();
+    //     $stmt = $db->prepare($query);
+    //     $stmt->execute(array($id));
+    //     $user = $stmt->fetch();
 
-        return $user;
+    //     return $user;
+    // }
+
+    static function addUser($name, $username, $pwd, $email, $db){
+
+        $stmt = $db->prepare('INSERT INTO Users(name, username, pwd, email, category) VALUES (?, ?, ?, ?, ?);');
+        $stmt->execute(array($name, $username, password_hash($pwd, PASSWORD_DEFAULT), $email, 'client'));
     }
 
-    function addUser($name, $username, $pwd, $email){
-        global $db;
-
-        $stmt = $db->prepare('INSERT INTO Users VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->execute(array($name, $username, password_hash($pwd, PASSWORD_DEFAULT), $email));
-    }
-
-    static function checkUser($username, $pwd,$db) {
+    static function checkUser($username, $pwd, $db) {
     
         $query =  'SELECT * FROM 
                    Users WHERE 
@@ -56,8 +55,7 @@
             
     }
 
-    function checkUsername($username) {
-        global $db;
+    static function checkUsername($username, $db) {
 
         $query =  'SELECT * FROM 
                    Users WHERE 
@@ -151,7 +149,6 @@
         }
         return 2;
     }
-
   }
 
 ?> 
