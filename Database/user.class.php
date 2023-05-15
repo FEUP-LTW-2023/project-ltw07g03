@@ -91,24 +91,32 @@
         return 2;
     }
 
-    function changeName($oldName, $newName){
-        global $db;
+    function changeName($db){
+        $stmt = $db->prepare('
+        UPDATE User SET name = ?
+        WHERE CustomerId = ?
+      ');
 
-        $query = 'SELECT * FROM Users WHERE name = ?';
-        $stmt = $db->prepare($query);
-        $stmt->execute(array($newName));
-        $probs = $stmt->fetchAll();
-
-        if($oldName != $newName){
-            if(count($probs) == 0){
-                $stmt->prepare('UPDATE Users SET name = ? WHERE name = ?');
-                $stmt->execute(array($oldName, $newName));
-                return 0;
-            }
-            return 1;  
-        }
-        return 2;
+      $stmt->execute(array($this->name, $this->id));
     }
+    
+    //     global $db;
+
+    //     $query = 'SELECT * FROM Users WHERE name = ?';
+    //     $stmt = $db->prepare($query);
+    //     $stmt->execute(array($newName));
+    //     $probs = $stmt->fetchAll();
+
+    //     if($oldName != $newName){
+    //         if(count($probs) == 0){
+    //             $stmt->prepare('UPDATE Users SET name = ? WHERE name = ?');
+    //             $stmt->execute(array($oldName, $newName));
+    //             return 0;
+    //         }
+    //         return 1;  
+    //     }
+    //     return 2;
+    // }
 
     function changeEmail($oldEmail, $newEmail){
         global $db;

@@ -19,41 +19,41 @@
   if ($user) {
     $user->name = $_POST['name'];
     
-    $user->save($db);
+    $user->changeName($db);
 
     $session->setName($user->name());
   }
 
-  if ($user) {
-    $user->email = $_POST['email'];
+  // if ($user) {
+  //   $user->email = $_POST['email'];
 
-    $user->save($db);
+  //   $user->save($db);
 
-    $session->setEmail($user->email());
-  }
+  //   $session->setEmail($user->email());
+  // }
 
-  if ($user) {
-    $user->username = $_POST['username'];
+  // if ($user) {
+  //   $user->username = $_POST['username'];
     
-    $user->save($db);
+  //   $user->save($db);
 
-    $session->setUsername($user->username());
-  }
+  //   $session->setUsername($user->username());
+  // }
 
-  if ($user) {
-    $user->username = $_POST['username'];
+  // if ($user) {
+  //   $user->username = $_POST['username'];
 
-    if ($_POST['palavra-passe']) {
-        $user->password = password_hash($_POST['palavra-passe'], PASSWORD_DEFAULT);
-    }
+  //   if ($_POST['palavra-passe']) {
+  //       $user->password = password_hash($_POST['palavra-passe'], PASSWORD_DEFAULT);
+  //   }
     
-    $user->save($db);
+  //   $user->save($db);
 
-    $session->setName($user->name());
-    $session->setEmail($user->email());
-    $session->setPassword($user->password());
-    $session->setUsername($user->username());
-  }
+  //   $session->setName($user->name());
+  //   $session->setEmail($user->email());
+  //   $session->setPassword($user->password());
+  //   $session->setUsername($user->username());
+  // }
 
   header('Location: ../pages/edit_profile.php');
 ?>

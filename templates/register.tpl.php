@@ -9,7 +9,7 @@
 	<div class="container">
         <span class="text-eyebrow">Passo 1 de 2</span>
 		<h1>Criar Conta</h1>
-		<form action = '../actions/action_register.php' method='post'>
+		<form action = '../actions/action_register_check_user.php' method='post'>
             <input type="text" id="name" name="name" placeholder="Nome Completo" required>
 			<input type="text" id="username" name="username" placeholder="Utilizador" required>
 
@@ -35,10 +35,10 @@
 <div class="container">
     <span class="text-eyebrow">Passo 2 de 2</span>
     <h1>Criar Conta</h1>
-    <form action='../actions/action_register_second_step.php' method='post'>
+    <form action='../actions/action_register.php' method='post'>
         <input type="email" id="email" name="email" placeholder="E-mail" required>
         <input type="password" id="password" name="password" placeholder="Palavra-passe" required>
-        <input type="password" id="password" name="password" placeholder="Confirme a palavra-passe" required>
+        <input type="password" id="password_check" name="password_check" placeholder="Confirme a palavra-passe" onblur="checkPasswordMatch()" required>
         <input type="hidden" id="name" name="name" value=<?= $name ?> >
         <input type="hidden" id="username" name="username" value=<?= $username ?> >
         <input type="submit" value="Criar Conta">

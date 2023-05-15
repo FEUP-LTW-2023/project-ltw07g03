@@ -23,7 +23,7 @@
 			<input type="submit" value="Login">
 		<div class="divider"></div>
 		</form>
-		<form action = "New_account_first_step.php">
+		<form action = "register.php">
 			<input type="submit" value="Criar uma conta" class="newlogin">
 		</form>
     </div>
