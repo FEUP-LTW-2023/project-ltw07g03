@@ -13,7 +13,9 @@
 
   $db = getDatabaseConnection();
 
+  $user = User::checkUser($db, $_SESSION['id']);
+
   drawHeader();
-  drawEditProfile($session);
+  drawEditProfile($user);
   drawFooter(); 
 ?>

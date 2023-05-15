@@ -3,33 +3,18 @@
         public int $id_user;
         public string $name;
         public string $username;
-        public string $pwd;
         public string $email;
         public string $category;
     
 
-    public function __construct(int $id_user, string $name, string $username, string $pwd, string $email, string $category){
+    public function __construct(int $id_user, string $name, string $username, string $email, string $category){
         $this->id_user = $id_user;
         $this->name = $name;
         $this->username = $username;
-        $this->pwd = $pwd;
         $this->email = $email;
         $this->category = $category;
     }
 
-    // static function getUser($id) {
-    //     global $db;
-
-    //     $query = 'SELECT * FROM
-    //               Users WHERE  
-    //               id_user = ?';
-
-    //     $stmt = $db->prepare($query);
-    //     $stmt->execute(array($id));
-    //     $user = $stmt->fetch();
-
-    //     return $user;
-    // }
 
     static function addUser($name, $username, $pwd, $email, $db){
 
@@ -37,7 +22,7 @@
         $stmt->execute(array($name, $username, password_hash($pwd, PASSWORD_DEFAULT), $email, 'client'));
     }
 
-    static function checkUser($username, $pwd, $db) {
+    static function checkUserWithPassword($username, $pwd, $db) : ?User {
     
         $query =  'SELECT * FROM 
                    Users WHERE 
@@ -46,13 +31,39 @@
         $stmt = $db->prepare($query);
         $stmt->execute(array($username));
         $user = $stmt->fetch();
-
+        
         if (password_verify( $pwd, $user["pwd"])) {
-            return TRUE;
+            
+             return new User(
+                $user['id_user'],
+                $user['name'],
+                $user['username'],
+                $user['email'],
+                $user['category']
+            );
         }
 
-        else {return FALSE;}
+        else {return NULL;}
             
+    }
+
+    static function checkUser(PDO $db, $id) : User {
+        $stmt = $db->prepare('
+          SELECT id_user, name, username, email, category 
+          FROM Users 
+          WHERE id_user = ?
+        ');
+
+        $stmt->execute(array($id));
+        $user = $stmt->fetch();
+
+        return new User(
+            (int)$user['id_user'],
+            $user['name'],
+            $user['username'],
+            $user['email'],
+            $user['category']
+        );
     }
 
     static function checkUsername($username, $db) {
@@ -72,92 +83,41 @@
             return FALSE;
     }
 
-    function changeUsername($oldusername, $newUsername){
-        global $db;
+    function changeUsername($db){
+        $stmt = $db->prepare('
+        UPDATE Users SET username = ?
+        WHERE id_user = ?
+      ');
 
-        $query = 'SELECT * FROM Users WHERE username = ?';
-        $stmt = $db->prepare($query);
-        $stmt->execute(array($newUsername));
-        $probs = $stmt->fetchAll();
-
-        if($oldusername != $newUsername){
-            if(count($probs) == 0){
-                $stmt->prepare('UPDATE Users SET username = ? WHERE username = ?');
-                $stmt->execute(array($oldusername, $newUsername));
-                return 0;
-            }
-            return 1;  
-        }
-        return 2;
+      $stmt->execute(array($this->username, $this->id_user));
     }
 
     function changeName($db){
         $stmt = $db->prepare('
-        UPDATE User SET name = ?
-        WHERE CustomerId = ?
+        UPDATE Users SET name = ?
+        WHERE id_user = ?
       ');
 
-      $stmt->execute(array($this->name, $this->id));
+      $stmt->execute(array($this->name, $this->id_user));
     }
-    
-    //     global $db;
 
-    //     $query = 'SELECT * FROM Users WHERE name = ?';
-    //     $stmt = $db->prepare($query);
-    //     $stmt->execute(array($newName));
-    //     $probs = $stmt->fetchAll();
+    function changeEmail($db){
+        $stmt = $db->prepare('
+        UPDATE Users SET email = ?
+        WHERE id_user = ?
+      ');
 
-    //     if($oldName != $newName){
-    //         if(count($probs) == 0){
-    //             $stmt->prepare('UPDATE Users SET name = ? WHERE name = ?');
-    //             $stmt->execute(array($oldName, $newName));
-    //             return 0;
-    //         }
-    //         return 1;  
-    //     }
-    //     return 2;
-    // }
-
-    function changeEmail($oldEmail, $newEmail){
-        global $db;
-
-        $query = 'SELECT * FROM Users WHERE email = ?';
-        $stmt = $db->prepare($query);
-        $stmt->execute(array($newEmail));
-        $probs = $stmt->fetchAll();
-
-        if($oldEmail != $newEmail){
-            if(count($probs) == 0){
-                $stmt->prepare('UPDATE Users SET email = ? WHERE email = ?');
-                $stmt->execute(array($oldEmail, $newEmail));
-                return 0;
-            }
-            return 1;  
-        }
-        return 2;
+      $stmt->execute(array($this->email, $this->id_user));
     }
     
 
-    function changePwd($username, $oldPwd, $newPwd){
-        global $db; 
+    function changePwd($db){
+        $stmt = $db->prepare('
+        UPDATE Users SET pwd = ?
+        WHERE id_user = ?
+      ');
 
-        $query = 'SELECT * FROM Users WHERE username = ?';
-        $stmt = $db->prepare($query);
-        $stmt->execute(array($username));
-        $currPwd = ($stmt->fetch())['password'];
-
-        if(password_verify($oldPwd, $currPwd)){
-            if(!password_verify($newPwd, $currPwd)){
-               $stmt->prepare('UPDATE Users SET pwd = ? WHERE username = ?');
-            $stmt->execute(array(password_hash($newPwd, PASSWORD_DEFAULT), $username));
-            $currPwd = $stmt->fetchAll();
-            return 0; 
-            }
-            return 1;
-        }
-        return 2;
+      $stmt->execute(array($this->pwd, $this->id_user));
     }
-  }
-
+}
 ?> 
-

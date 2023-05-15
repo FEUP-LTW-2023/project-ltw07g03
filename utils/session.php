@@ -29,16 +29,28 @@
       return $this->messages;
     }
 
-    // public function getName() : ?string {
-    //   return isset($_SESSION['name']) ? $_SESSION['name'] : null;
-    // }
+    static function getName() : ?string {
+      return isset($_SESSION['name']) ? $_SESSION['name'] : 'null';
+    }
 
-    // public function setId(int $id) {
-    //   $_SESSION['id'] = $id;
-    // }
+    public function setId(int $id) {
+      $_SESSION['id'] = $id;
+    }
 
     public function setName(string $name) {
       $_SESSION['name'] = $name;
+    }
+
+    public function setEmail(string $email) {
+      $_SESSION['email'] = $email;
+    }
+
+    public function setUsername(string $username) {
+      $_SESSION['username'] = $username;
+    }
+
+    public function setPwd(string $pwd) {
+      $_SESSION['pwd'] = $pwd;
     }
 
   }

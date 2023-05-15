@@ -108,65 +108,14 @@ input[type=submit]:hover:not(.newlogin),.edit-btn:hover {
 	font: 430 0.7em Poppins;
 }
 
-.text-caption a, .high_contrast{
+.text-caption a	{
 	color: #4e4b4b;
 }
 
-.low_contrast,.high_contrast{
-	font: 530 0.9em Poppins;
-	padding: 8px;
-}
-
-.high_contrast{
-	margin-top: 5px;
-}
-
 .low_contrast{
-	color:#807b7b;
 	font: 630 0.9em Poppins;
-	padding: 0px 8px;
-}
-
-/* Estilos para o popup de edição */
-.edit-popup {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.3);
-	backdrop-filter: blur(5px);
-	display: none;
-	align-items: center;
-	justify-content: center;
-}
-
-.edit-popup-content {
-    position: relative;
-	background-color: #fdf9f9;
-	padding: 30px;
-	border-radius: 8px;
-	min-width: 250px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0.5px;
-	border:none;
-    font-size: 30px;
-	font-weight: 280;
-    cursor: pointer;
-    padding: 5px 15px 0px 0px;
-	color:#3b3939;
-	background-color:#fdf9f9;
-}
-
-.p-edit {
-	display: flex;
-  	justify-content: space-between;
-	margin: 0px 0px 25px 0px;
+	padding: 0px;
+	color:#807b7b;
 }
 
 .error, .double_user {
@@ -178,7 +127,7 @@ input[type=submit]:hover:not(.newlogin),.edit-btn:hover {
 
 footer {
 	bottom: 0;
-    position: fixed;
+    position: relative;
     width: 98%;
     text-align: center;
 }

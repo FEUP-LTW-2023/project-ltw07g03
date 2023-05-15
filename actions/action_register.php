@@ -12,10 +12,19 @@
     include_once(ROOT . '/Database/user.class.php');  
     include_once(ROOT . '/templates/register.tpl.php');  
     require_once(__DIR__ . '/../templates/common.tpl.php');
+    
     $session = new Session();
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+
+        $session->addMessage('hacker','Tentativa de csrf');
+        header('Location: ../pages/edit_profile.php');
+        exit();
+    }
+
     $db = getDatabaseConnection();
 
-    User::addUser($_POST['name'], $_POST['username'], $_POST['pwd'], $_POST['email'], $db);
-        header('Location: ../pages/home_page.php');
+    User::addUser(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['username']), htmlspecialchars($_POST['pwd']), htmlspecialchars($_POST['email']), $db);
+        header('Location: ../pages/edit_profile.php');
     
 ?>
