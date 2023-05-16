@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Home Page" />
 	<title>Home</title>
-    <link rel="stylesheet" type="text/css" href="style_home.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <header>
     <nav>
@@ -209,6 +209,3 @@
 <?php
 
 ?>
-
-
-<!--  -->

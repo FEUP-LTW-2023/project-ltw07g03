@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -5,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Crie um ticket novo" />
 	<title>New Ticket</title>
-	<link rel="stylesheet" type="text/css" href="style_new_ticket.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <header>
 	<a href=""><img id="logo" src="logo.png"></a>
@@ -26,7 +30,7 @@
             </select>
 			<input type="submit" value="Guardar">
 	    </form>
-</div>
+    </div>
 </body>
 </html>
 
