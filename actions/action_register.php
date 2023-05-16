@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "/../conf.php");
+    require_once(__DIR__ . "/../conf.php");
     
     //VOLTAR AQUI!!!!
     // if (!preg_match("/[\w]{3,20}/", $_POST['username']) ||
@@ -18,7 +18,7 @@
     if ($_SESSION['csrf'] !== $_POST['csrf']) {
 
         $session->addMessage('hacker','Tentativa de csrf');
-        header('Location: ../pages/edit_profile.php');
+        header('Location: ../index.php');
         exit();
     }
 

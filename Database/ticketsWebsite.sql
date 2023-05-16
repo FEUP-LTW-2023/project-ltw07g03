@@ -31,12 +31,13 @@ CREATE TABLE Agents (
 CREATE TABLE Tickets (
     id_ticket INTEGER PRIMARY KEY,
     id_user INTEGER NOT NULL,
-    id_department INTEGER NOT NULL,
+    the_subject TEXT NOT NULL,
     ticket_date DATE NOT NULL,
+    id_department INTEGER NOT NULL,
     id_assigned_agent INTEGER NOT NULL,
     id_status INTEGER NOT NULL,
+    message TEXT NOT NULL,
     id_priority INTEGER NOT NULL,
-    hashtag TEXT NOT NULL,
     FOREIGN KEY (id_user) REFERENCES Users(id_user),
     FOREIGN KEY (id_department) REFERENCES Departments(id_department),
     FOREIGN KEY (id_assigned_agent) REFERENCES Agents(id_agent),
@@ -67,12 +68,12 @@ INSERT INTO Users VALUES(4, 'Sérgio Conceição', 'sergiofcp1893', '$2y$10$BMHv
 INSERT INTO Users VALUES(5, 'Rúben Amorim', 'rubenscp1906', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rubenamorim@xyz.com', 'client');
 INSERT INTO Users VALUES(6, 'Roger Schmidt', 'rogerslb1904', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rogerschimdt@xyz.com', 'client');
 
-INSERT INTO Departments VALUES(1, 'Accounting');
-INSERT INTO Departments VALUES(2, 'Technical Support');
-INSERT INTO Departments VALUES(3, 'Billing');
-INSERT INTO Departments VALUES(4, 'Sales');
-INSERT INTO Departments VALUES(5, 'Customer Service');
-INSERT INTO Departments VALUES(6, 'General');
+INSERT INTO Departments VALUES(1, 'Contabilidade');
+INSERT INTO Departments VALUES(2, 'Suporte Técnico');
+INSERT INTO Departments VALUES(3, 'Faturação');
+INSERT INTO Departments VALUES(4, 'Vendas');
+INSERT INTO Departments VALUES(5, 'Serviço de Atendimento ao Cliente');
+INSERT INTO Departments VALUES(6, 'Geral');
 
 INSERT INTO Agents VALUES(1, 2, 5);
 INSERT INTO Agents VALUES(2, 5, 2);
@@ -83,6 +84,11 @@ INSERT INTO Status VALUES(2, 'fechado');
 
 INSERT INTO Priority VALUES(1, 'normal');
 INSERT INTO Priority VALUES(2, 'urgente');
+INSERT INTO Priority VALUES(3, 'muito urgente');
 
-INSERT INTO Tickets VALUES(1, 2, 3, 2023/04/03, 3 , 1 , 1 ,'#test');
-INSERT INTO Tickets VALUES(2, 6, 5, 2023/04/07, 1 , 1 , 2 ,'#test');
+INSERT INTO Tickets VALUES(1, 2, 'Problemas de rede' , 2023-04-03, 2, 3 , 1 ,'Prezada equipe de suporte,
+
+Estamos enfrentando problemas de conectividade em nossa rede local. A conexão está intermitente e nossa produtividade está sendo afetada. Por favor, nos ajude a resolver essa questão o mais rápido possível.
+
+Agradecemos sua pronta resposta.', 2);
+INSERT INTO Tickets VALUES(2, 6, 'Incidente de segurança', 2023-04-07, 2, 1 , 1 ,'Gostaria de relatar um incidente de segurança em nosso sistema. Detectamos um possível ataque cibernético e estamos preocupados com a proteção de nossos dados. Por favor, nos forneça assistência imediata para resolver esse problema e fortalecer nossas defesas.', 3);

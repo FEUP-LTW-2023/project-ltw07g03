@@ -64,5 +64,5 @@
   }
 }
 
-  header('Location: ../pages/edit_profile.php');
+  header('Location: ../index.php');
 ?>

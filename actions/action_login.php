@@ -1,6 +1,6 @@
 <?php
     
-    include_once(__DIR__ . '/../conf.php');
+    require_once(__DIR__ . '/../conf.php');
     require_once(__DIR__ .'/../utils/session.php');
     require_once(__DIR__ .'/../Database/connection.php');
 
@@ -31,7 +31,7 @@
         $_SESSION['username'] = $user->username;
      
         $_SESSION['id'] = $user->id_user;
-        header('Location: ../pages/edit_profile.php');
+        header('Location: ../pages/newTicket.php');
     }
     else{
         $session->addMessage('error', 'O utlizador ou palavra-passe estão errados.');
