@@ -17,6 +17,6 @@
   $user = User::checkUser($db, $_SESSION['id']);
 
   drawHeader();
-  drawNewTicket($user);
+  drawNewTicket($user, $session);
   drawFooter(); 
 ?>

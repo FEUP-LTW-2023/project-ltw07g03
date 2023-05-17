@@ -131,7 +131,7 @@ input[type=submit]:hover:not(.newlogin),.edit-btn:hover {
 	padding: 8px;
 }
 
-.error, .double_user {
+.error, .double_user, .fail {
 	text-align: center;
 	font: 450 0.9em Poppins;
 	padding: 0px 8px 10px 8px;

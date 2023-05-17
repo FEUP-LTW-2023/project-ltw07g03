@@ -5,16 +5,34 @@
    require_once(__DIR__ . '/../Database/user.class.php');
 ?>
 
-<?php function drawNewTicket(User $user) { ?>
+<?php function drawNewTicket(User $user, Session $session) { ?>
 
 <div class="container">
 		<h1>Novo Ticket</h1>
 		<form action = "../actions/actionNewTicket.php" method = "post">
+            
+            <section id="messages">
+			<?php foreach ($session->getMessages() as $messsage) { ?>
+                <?php if($messsage['type'] == 'fail'){ ?>
+                    <article class="<?=$messsage['type']?>">
+                    <?=$messsage['text']?>
+                    </article>
+                <?php } ?>
+			<?php } ?>
+			</section>
+
             <input type="hidden" id="id_user" name="id_user" value=<?= $id_user ?> >
-            <div><span class="low_contrast">Assunto</span></div>
+            <div><span class="low_contrast">Qual o assunto da sua solicitação?</span></div>
             <input type="text" id="the_subject" name="the_subject" placeholder="Ex: Problemas de rede" required>
-            <div><span class="low_contrast">Data da Solicitação</span></div>
-            <input type="date" id="ticket_date" name="ticket_date" required>
+            <div><span class="low_contrast">Categoria</span></div>
+            <select id="id_department" name="id_department" required>
+                <option disabled selected value>selecione uma opção</option>
+                <option value="1">Pedido</option>
+                <option value="2">Elogio</option>
+                <option value="3">Dúvida</option>
+                <option value="4">Sugestão</option>
+                <option value="5">Reclamação</option>
+            </select>
             <div><span class="low_contrast">Departamento</span></div>
             <select id="id_department" name="id_department" required>
                 <option disabled selected value>selecione uma opção</option>
