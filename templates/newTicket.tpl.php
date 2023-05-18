@@ -25,7 +25,7 @@
             <div><span class="low_contrast">Qual o assunto da sua solicitação?</span></div>
             <input type="text" id="the_subject" name="the_subject" placeholder="Ex: Problemas de rede" required>
             <div><span class="low_contrast">Categoria</span></div>
-            <select id="id_department" name="id_department" required>
+            <select id="id_hashtag" name="id_hashtag" required>
                 <option disabled selected value>selecione uma opção</option>
                 <option value="1">Pedido</option>
                 <option value="2">Elogio</option>
@@ -46,7 +46,7 @@
             <div><span class="low_contrast">Como podemos te ajudar hoje?</span></div>
             <textarea type="text" id="message" name="message" placeholder="Escreva aqui a sua mensagem" rows="7" required></textarea>
             <div><span class="low_contrast">Qual o nível de urgência da sua solicitação?</span></div>
-            <select id="id_status" name="id_status" required>
+            <select id="id_priority" name="id_priority" required>
                 <option disabled selected value>selecione uma opção</option>
                 <option value="1">Normal</option>
                 <option value="2">Urgente</option>

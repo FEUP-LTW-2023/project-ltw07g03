@@ -50,64 +50,99 @@
         return (int) $result['id_agent'];
     }
     
-    // Se nenhum agente for encontrado, pode ser tratado de acordo com suas necessidades
-    // Por exemplo, retornar um valor padrão ou lançar uma exceção.
-    // Neste exemplo, retornaremos 0 para indicar que não há agentes disponíveis.
+    // Se nenhum agente for encontrado, retorna 0 para indicar que não há agentes disponíveis.
     return 0;
 }
 
-    // static function getAgentTickets(PDO $db, int $id) : array {
-    //   $stmt = $db->prepare('
-    //     SELECT AlbumId, Title, COUNT(*) AS tracks, SUM(Milliseconds) AS length, ArtistId
-    //     FROM Album JOIN Track USING (AlbumId)
-    //     WHERE ArtistId = ?
-    //     GROUP BY AlbumId
-    //   ');
-    //   $stmt->execute(array($id));
+public static function getDate($id_ticket, $db)
+{
+    // Consultar o banco de dados para obter o valor do campo TIMESTAMP
+    $query = "SELECT ticket_date FROM Tickets WHERE id_ticket = :id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':id', $id_ticket, PDO::PARAM_INT);
+    $stmt->execute();
 
-    //   $albums = array();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //   while ($album = $stmt->fetch()) {
-    //     $albums[] = new Album(
-    //       $album['AlbumId'],
-    //       $album['Title'],
-    //       $album['tracks'],
-    //       intval(round($album['length'] / 1000 / 60)),
-    //       $album['ArtistId']
-    //     );
-    //   }
+    if ($result !== false) {
+        // Obter o valor do campo TIMESTAMP do banco de dados
+        $timestamp = $result['ticket_date'];
 
-    //   return $albums;
+        // Converta o valor do timestamp para uma data no formato PHP
+        $date = new DateTime($timestamp);
+
+        // Obtenha a data atual
+        $now = new DateTime();
+
+        // Calcule a diferença entre as datas
+        $diff = $now->diff($date);
+
+        // Obtenha o número de dias da diferença
+        $days = $diff->days;
+
+        // Crie a string "há X dias" para exibição
+        if ($days == 0) {
+            $output = "hoje";
+        } elseif ($days == 1) {
+            $output = "há 1 dia";
+        } else {
+            $output = "há " . $days . " dias";
+        }
+
+        return $output;
+    }
+
+    // Caso o ticket não seja encontrado
+    return "Ticket não encontrado ou valor inadequado";
+}
+
+public static function getClientTickets($userId, $db)
+{
+    $query = "SELECT the_subject, id_department, id_status FROM Tickets WHERE id_user = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array($userId));
+    $tickets = $stmt->fetch();
+    return $tickets['id_department'];
+    // $tickets = array();
+    // while($ticket = $stmt->fetch()){
+    //   $tickets[] = new Ticket(
+    //       $ticket[]
+
+
+    //   ); 
     // }
+    // echo $tickets[1]['id_department'];
+    die();
+    return $tickets;
+}
 
-//     static function getTicket(PDO $db, int $id) : Ticket {
-//       $stmt = $db->prepare('
-//         SELECT AlbumId, Title, COUNT(*) AS tracks, SUM(Milliseconds) AS length, ArtistId
-//         FROM Album JOIN Track USING (AlbumId)
-//         WHERE AlbumId = ?
-//         GROUP BY AlbumId
-//       ');
-//       $stmt->execute(array($id));
+public static function getTicketById($ticketId, $db)
+{
+    $query = "SELECT * FROM Tickets WHERE id_ticket = :ticketId";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':ticketId', $ticketId, PDO::PARAM_INT);
+    $stmt->execute();
 
-//       $album = $stmt->fetch();
+    $ticketData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-//       return new Album(
-//         $album['AlbumId'],
-//         $album['Title'],
-//         $album['tracks'],
-//         intval(round($album['length'] / 1000 / 60)),
-//         $album['ArtistId']
-//       );
-//     }
+    if ($ticketData === false) {
+        return null; // Ticket não encontrado
+    }
 
-//     function save(PDO $db) {
-//       $stmt = $db->prepare('
-//         UPDATE ALBUM SET Title = ?
-//         WHERE AlbumId = ?
-//       ');
+    $ticket = new Ticket();
+    $ticket->setId($ticketData['id_ticket']);
+    $ticket->setUserId($ticketData['id_user']);
+    $ticket->setSubject($ticketData['the_subject']);
+    $ticket->setDepartmentId($ticketData['id_department']);
+    $ticket->setTimestamp($ticketData['ticket_date']);
+    $ticket->setHashtagId($ticketData['id_hashtag']);
+    $ticket->setAgentId($ticketData['id_assigned_agent']);
+    $ticket->setStatus($ticketData['id_status']);
+    $ticket->setMessage($ticketData['message']);
+    $ticket->setPriority($ticketData['priority']);
 
-//       $stmt->execute(array($this->title, $this->id));
-//     }
+    return $ticket;
+}
 
 }
 ?>
