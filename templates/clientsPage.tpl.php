@@ -47,15 +47,14 @@
                 <tbody>
                     <?php 
                     // Para cada ticket, obtém os detalhes completos usando getTicketById
-                    foreach ($tickets as $ticketData) {
-                        $ticketId = $ticketData['id_ticket'];
-                        $ticket = Ticket::getTicketById($ticketId, $db);
+                    foreach ($tickets as $ticket) {
+                        $ticketId = $ticket['id_ticket'];
                     ?>
                         <tr>
-                            <td><?= $ticket->getSubject();?></td>
-                            <td><?= $ticket->getDepartmentId();?></td>
+                            <td><?= $ticket['the_subject'];?></td>
+                            <td><?= $ticket['id_department'];?></td>
                             <td><?= Ticket::getDate($ticketId, $db); ?></td>
-                            <td><?= $ticket->getStatus();?></td>
+                            <td><?= $ticket['id_status'];?></td>
                         </tr> 
                     <?php } ?>
                 </tbody>

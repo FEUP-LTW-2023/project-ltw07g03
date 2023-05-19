@@ -98,22 +98,19 @@ public static function getDate($id_ticket, $db)
 
 public static function getClientTickets($userId, $db)
 {
-    $query = "SELECT the_subject, id_department, id_status FROM Tickets WHERE id_user = ?";
+    $query = "SELECT id_ticket, the_subject, id_department, id_status FROM Tickets WHERE id_user = ?";
     $stmt = $db->prepare($query);
     $stmt->execute(array($userId));
-    $tickets = $stmt->fetch();
-    return $tickets['id_department'];
-    // $tickets = array();
-    // while($ticket = $stmt->fetch()){
-    //   $tickets[] = new Ticket(
-    //       $ticket[]
-
-
-    //   ); 
-    // }
-    // echo $tickets[1]['id_department'];
-    die();
-    return $tickets;
+    $tickets = array();
+    while($ticket = $stmt->fetch()){
+        $ticketAtributes = array();
+        $ticketAtributes['id_ticket'] = $ticket['id_ticket'];
+        $ticketAtributes['the_subject'] = $ticket['the_subject'];
+        $ticketAtributes['id_department'] = $ticket['id_department'];
+        $ticketAtributes['id_status'] = $ticket['id_status'];
+        $tickets[] = $ticketAtributes;
+    }
+   return $tickets;
 }
 
 public static function getTicketById($ticketId, $db)

@@ -13,13 +13,9 @@
 
   $db = getDatabaseConnection();
 
-  $user = User::checkUser($db, $_SESSION['id']);
-  $userId = $user->id_user;
-  $tickets = Ticket::getClientTickets($userId, $db);
+  echo $tickets;
 
-  Ticket::getDate(1, $db);
-  die();
-  drawHeaderClientPage($user);
-  drawClientPage($user, $tickets, $db);
+  drawHeader();
+  drawDetalhesTicket();
   drawFooter(); 
 ?>

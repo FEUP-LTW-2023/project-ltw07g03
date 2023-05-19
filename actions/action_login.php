@@ -31,7 +31,7 @@
         $_SESSION['username'] = $user->username;
      
         $_SESSION['id'] = $user->id_user;
-        header('Location: ../pages/newTicket.php');
+        header('Location: ../pages/clientsPage.php');
     }
     else{
         $session->addMessage('error', 'O utlizador ou palavra-passe estão errados.');

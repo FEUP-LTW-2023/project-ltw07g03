@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS FAQs;
 DROP TABLE IF EXISTS Status;
 DROP TABLE IF EXISTS Priority;
 DROP TABLE IF EXISTS Hashtag;
+DROP TABLE IF EXISTS TicketMessages;
 
 CREATE TABLE Users (
     id_user INTEGER PRIMARY KEY,
@@ -69,12 +70,21 @@ CREATE TABLE Hashtag (
     hastag_name TEXT NOT NULL
 );
 
+CREATE TABLE TicketMessages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ticket_id INTEGER NOT NULL,
+  message_text TEXT,
+  sender TEXT NOT NULL,
+  sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (ticket_id) REFERENCES Tickets(id_ticket)
+);
+
 INSERT INTO Users VALUES(1, 'Amanda Silva', 'amandasilva02', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'amandasilva@xyz.com', 'admin');
 INSERT INTO Users VALUES(2, 'João Miranda', 'joaom2211', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'joaomiranda@xyz.com', 'admin');
 INSERT INTO Users VALUES(3, 'Maria Beatriz Carneiro', 'beacarneiro058', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'beatrizcarneiro@xyz.com', 'admin');
 INSERT INTO Users VALUES(4, 'Sérgio Conceição', 'sergiofcp1893', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'sergioconceicao@xyz.com', 'agent');
-INSERT INTO Users VALUES(5, 'Rúben Amorim', 'rubenscp1906', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rubenamorim@xyz.com', 'client');
-INSERT INTO Users VALUES(6, 'Roger Schmidt', 'rogerslb1904', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rogerschimdt@xyz.com', 'client');
+INSERT INTO Users VALUES(5, 'Rúben Amorim', 'rubenscp1906', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rubenamorim@xyz.com', 'agent');
+INSERT INTO Users VALUES(6, 'Roger Schmidt', 'rogerslb1904', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rogerschimdt@xyz.com', 'agent');
 
 INSERT INTO Departments VALUES(1, 'Contabilidade');
 INSERT INTO Departments VALUES(2, 'Suporte Técnico');
@@ -86,6 +96,9 @@ INSERT INTO Departments VALUES(6, 'Geral');
 INSERT INTO Agents VALUES(1, 2, 5);
 INSERT INTO Agents VALUES(2, 5, 2);
 INSERT INTO Agents VALUES(3, 6, 3);
+INSERT INTO Agents VALUES(4, 1, 1);
+INSERT INTO Agents VALUES(5, 3, 4);
+INSERT INTO Agents VALUES(6, 4, 6);
 
 INSERT INTO Status VALUES(1, 'aberto');
 INSERT INTO Status VALUES(2, 'fechado');
@@ -100,9 +113,8 @@ INSERT INTO Hashtag VALUES (3, 'dúvida');
 INSERT INTO Hashtag VALUES (4, 'sugestão');
 INSERT INTO Hashtag VALUES (5, 'reclamação');
 
-INSERT INTO Tickets VALUES(1, 2, 'Problemas de rede' , '2023-05-17 14:30:21', 1, 2, 3 , 1 ,'Prezada equipe de suporte,
+INSERT INTO Tickets VALUES(1, 2, 'Atendimento Terrível' , 5, '2023-05-17 14:30:21', 5, 5, 1,'Gostaria de registrar uma reclamação sobre a má qualidade de atendimento que recebi recentemente. O atendimento foi pouco profissional e não atendeu às minhas expectativas. Solicito que essa questão seja analisada e medidas sejam tomadas para melhorar a qualidade do serviço prestado.', 1);
+INSERT INTO Tickets VALUES(2, 6, 'Incidente de segurança', 2, '2023-05-17 14:30:21', 1, 2, 1,'Gostaria de relatar um incidente de segurança em nosso sistema. Detectamos um possível ataque cibernético e estamos preocupados com a proteção de nossos dados. Por favor, nos forneça assistência imediata para resolver esse problema e fortalecer nossas defesas.', 3);
 
-Estamos enfrentando problemas de conectividade em nossa rede local. A conexão está intermitente e nossa produtividade está sendo afetada. Por favor, nos ajude a resolver essa questão o mais rápido possível.
-
-Agradecemos sua pronta resposta.', 2);
-INSERT INTO Tickets VALUES(2, 6, 'Incidente de segurança', '2023-05-17 14:30:21', 1, 2, 1 , 1 ,'Gostaria de relatar um incidente de segurança em nosso sistema. Detectamos um possível ataque cibernético e estamos preocupados com a proteção de nossos dados. Por favor, nos forneça assistência imediata para resolver esse problema e fortalecer nossas defesas.', 3);
+INSERT INTO TicketMessages VALUES(1, 1, 'Lamentamos a sua má experiência. Pode nos contar mais detalhes sobre o que aconteceu?', 'Rúben Amorim', '2023-05-18 13:33:19');
+INSERT INTO TicketMessages VALUES(2, 1, 'Não quero compartilhar detalhes.', 'rogerslb1904', '2023-05-18 13:33:19');
