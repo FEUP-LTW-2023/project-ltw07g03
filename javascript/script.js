@@ -9,4 +9,4 @@ function checkPasswordMatch() {
 	  document.getElementById("password_check").value = "";
 	  document.getElementById("password").focus();
 	}
-  }
+}

@@ -17,8 +17,6 @@
   $userId = $user->id_user;
   $tickets = Ticket::getClientTickets($userId, $db);
 
-  Ticket::getDate(1, $db);
-  die();
   drawHeaderClientPage($user);
   drawClientPage($user, $tickets, $db);
   drawFooter(); 

@@ -19,8 +19,15 @@
     <header>
         <nav>
             <a href=""><img id="logo" src="/imagens/logo.png" alt=logo></a>
-            <div class="user">
-                <span class="username">Olá, <?= $user->name; ?>!</span>
+            <div class="dropdown">
+                <button class="username">Olá, <?= $user->name; ?>!</button>
+                <div class="dropdown-content">
+                    <a href = "../pages/edit_profile.php">Editar Perfil</a><br>
+                    <a href = "../pages/NewTicket.php" >Criar Novo Ticket</a><br>
+                    <form action="../actions/action_logout.php" method="post" class="logout">
+                        <button class="client-page" type="submit">Logout</button>
+                    </form>
+                </div>
             </div>
         </nav>
     </header>
@@ -29,32 +36,31 @@
 <?php function drawClientPage(User $user, array $tickets, $db) { ?>
 
 <div class="grid-container">
-        <div class="item-1">
+        <div class="item-1">    
         </div>
 
         <div class="item-2">
             <h2>📋 Meus Tickets</h2>
-            <table>
-                <thead>
+            <table class="client_ticket">
+                <thead class="top-table">
                     <tr>
-                        <th>Assunto</th>
-                        <th>Departamento</th>
-                        <th>Data</th>
-                        <th>Estado</th>
-                        <th></th>
+                        <th class="table-header-left">Assunto</th>
+                        <th class="table-header">Departamento</th>
+                        <th class="table-header">Data</th>
+                        <th class="table-header-right">Estado</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="body-table">
                     <?php 
                     // Para cada ticket, obtém os detalhes completos usando getTicketById
                     foreach ($tickets as $ticket) {
                         $ticketId = $ticket['id_ticket'];
                     ?>
                         <tr>
-                            <td><?= $ticket['the_subject'];?></td>
-                            <td><?= $ticket['id_department'];?></td>
-                            <td><?= Ticket::getDate($ticketId, $db); ?></td>
-                            <td><?= $ticket['id_status'];?></td>
+                            <td class="table-data"><?= $ticket['the_subject'];?></td>
+                            <td class="table-data"><?= Ticket::getDepartament($ticket['id_department'],$db);?></td>
+                            <td class="table-data"><?= Ticket::getDate($ticketId, $db); ?></td>
+                            <td class="table-data"><?= Ticket::getStatus($ticket['id_status'],$db);?></td>
                         </tr> 
                     <?php } ?>
                 </tbody>
@@ -63,8 +69,7 @@
         </div>
 
         <div class="item-3">
-            <a href = "../pages/NewTicket.php"><button>Novo Ticket</button></a>
-            <a href = "../pages/edit_profile.php"><button>Editar Perfil</button></a>
+            
         </div>
     </div>
 </div>

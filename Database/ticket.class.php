@@ -59,28 +59,21 @@ public static function getDate($id_ticket, $db)
     // Consultar o banco de dados para obter o valor do campo TIMESTAMP
     $query = "SELECT ticket_date FROM Tickets WHERE id_ticket = :id";
     $stmt = $db->prepare($query);
-    $stmt->bindValue(':id', $id_ticket, PDO::PARAM_INT);
-    $stmt->execute();
-
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->execute(array(':id' => $id_ticket));
+    $result = $stmt->fetch();
 
     if ($result !== false) {
-        // Obter o valor do campo TIMESTAMP do banco de dados
-        $timestamp = $result['ticket_date'];
+        // Obter a parte da data do campo ticket_date do banco de dados
+        $ticket_day = substr($result['ticket_date'], 0, 10);
 
-        // Converta o valor do timestamp para uma data no formato PHP
-        $date = new DateTime($timestamp);
+        // Obter a parte da data atual
+        $current_day = date("Y-m-d");
 
-        // Obtenha a data atual
-        $now = new DateTime();
+        // Calcular a diferença em dias
+        $diff = strtotime($current_day) - strtotime($ticket_day);
+        $days = floor($diff / (60 * 60 * 24));
 
-        // Calcule a diferença entre as datas
-        $diff = $now->diff($date);
-
-        // Obtenha o número de dias da diferença
-        $days = $diff->days;
-
-        // Crie a string "há X dias" para exibição
+        // Criar a string "há X dias" para exibição
         if ($days == 0) {
             $output = "hoje";
         } elseif ($days == 1) {
@@ -92,19 +85,21 @@ public static function getDate($id_ticket, $db)
         return $output;
     }
 
-    // Caso o ticket não seja encontrado
+    //Caso o ticket não seja encontrado
     return "Ticket não encontrado ou valor inadequado";
 }
 
+
 public static function getClientTickets($userId, $db)
 {
-    $query = "SELECT id_ticket, the_subject, id_department, id_status FROM Tickets WHERE id_user = ?";
+    $query = "SELECT id_ticket, ticket_date, the_subject, id_department, id_status FROM Tickets WHERE id_user = ?";
     $stmt = $db->prepare($query);
     $stmt->execute(array($userId));
     $tickets = array();
     while($ticket = $stmt->fetch()){
         $ticketAtributes = array();
         $ticketAtributes['id_ticket'] = $ticket['id_ticket'];
+        $ticketAtributes['ticket_date'] = $ticket['ticket_date'];
         $ticketAtributes['the_subject'] = $ticket['the_subject'];
         $ticketAtributes['id_department'] = $ticket['id_department'];
         $ticketAtributes['id_status'] = $ticket['id_status'];
@@ -139,6 +134,44 @@ public static function getTicketById($ticketId, $db)
     $ticket->setPriority($ticketData['priority']);
 
     return $ticket;
+}
+
+public static function getStatus($id_status, $db)
+{
+    // Consultar o banco de dados para obter o valor do campo status_name
+    $query = "SELECT status_name FROM Status WHERE id_status = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array(':id' => $id_status));
+    $result = $stmt->fetch();
+
+    if ($result !== false) {
+        // Obter o valor do campo status_name
+        $status_name = $result['status_name'];
+
+        return $status_name;
+    }
+
+    // Caso o status não seja encontrado
+    return "Status não encontrado ou valor inadequado";
+}
+
+public static function getDepartament($id_department, $db)
+{
+    // Consultar o banco de dados para obter o valor do campo department_name
+    $query = "SELECT department_name FROM Departments WHERE id_department = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array(':id' => $id_department));
+    $result = $stmt->fetch();
+
+    if ($result !== false) {
+        // Obter o valor do campo department_name
+        $department_name = $result['department_name'];
+
+        return $department_name;
+    }
+
+    // Caso o departamento não seja encontrado
+    return "Departamento não encontrado para o ID fornecido";
 }
 
 }

@@ -56,7 +56,7 @@ form {
 	flex-direction: column;
 }
 
-input[type=text], input[type=password], input[type=email], input[type=date], textarea[type=text], select, option {
+input[type=text], input[type=password], input[type=email], input[type=date], textarea[type=text], select.selected, select, option {
 	padding: 10px;
 	border-radius: 5px;
 	border: none;
@@ -64,10 +64,10 @@ input[type=text], input[type=password], input[type=email], input[type=date], tex
 	font-family: Poppins;
 	background-color: #e9e8e8;
 	box-shadow:2px 2px #c0c0c2;
-	color: #737375
+	color: #737375;
 }
 
-input[type=submit]:not(.newlogin), .edit-btn{
+input[type=submit]:not(.newlogin), .edit-btn,.client-page{
 	background-color: #4169E1;
 	color: #f7f4f4;
 	border: none;
@@ -78,7 +78,7 @@ input[type=submit]:not(.newlogin), .edit-btn{
 	margin-bottom: 20px;
 }
 
-input[type=submit]:hover:not(.newlogin),.edit-btn:hover {
+input[type=submit]:hover:not(.newlogin),.edit-btn:hover,.client-page:hover{
 	background-color:#3252b5;
 }
 
@@ -210,11 +210,15 @@ nav .user img {
     border-radius: 50%;
 }
   
-nav .username {
-    font-weight: bold;
+.username {
     color: #3b3939;
     width: 190px;
+    border: none;
+    background-color: #fdf9f9;
+    font: 630 1em Poppins;
 }
+
+
 
 /* Home Nav Bar */
 
@@ -257,7 +261,34 @@ nav .username {
 
 /* Home Table */
 
-table {
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font: 530 1em Poppins;
+    padding: 15px;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    display: block;
+    color:#3b3939;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+    background-color: #d1d9f2;
+    border-radius: 20px;
+}
+
+.client_ticket {
     margin-left: 10px;
     padding-right: 50px;
     font-size:15px;
@@ -265,22 +296,52 @@ table {
     width: 98%;
 }
 
-.selected {
-    background-color: #e9e8e8;
-}
-
-tr, td {
+tr, td, th {
     border-bottom: 1px solid #ddd;
     text-align: left;
-    padding: 8px;
+    padding: 20px 0px 20px 15px;
+    font: 550 1em Poppins;
+    color:#393737;
+    border: none;
 }
 
 th {
-    font-size: larger;
+    font: 530 1em Poppins;
+    padding: 20px 0px 20px 20px;
+    color:#3b3939;
 }
 
-tr:hover {
-    background-color: #e9e8e8;
+tbody tr:hover{
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+tbody > tr:nth-child(odd){
+    background-color: #f3f3f5;
+    border-radius: 15px;
+}
+
+
+.top-table, .body-table{
+    border-radius: 30px 30px 0px 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 255, 0.1);
+}
+
+.body-table{
+    border-radius: 0px 0px 30px 30px;
+}
+
+.table-header, .table-header-left, .table-header-right {
+    background-color: #d1d9f2; /* Cor de fundo para os títulos */
+    color: #3b3939; /* Cor do texto dos títulos */
+}
+
+.table-header-left{
+    border-radius: 30px 0px 0px 0px;
+}
+
+.table-header-right{
+    border-radius: 0px 30px 0px 0px;
 }
 
 /* Home Table */
@@ -306,7 +367,7 @@ tr:hover {
 
 /* Buttons */
 
-button {
+button:not(.username) {
     padding: 20px;
     margin-bottom: 18px;
 	border: none;
@@ -359,8 +420,8 @@ button:hover {
     width: 20px;
 }  
 
-.item-3 {
-    margin: 25px 0px 0px 20px;
+.item-1 {
+    margin: 25px 25px 0px 20px;
 }
 
 /* Home Edit Button */
