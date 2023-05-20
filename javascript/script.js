@@ -10,3 +10,10 @@ function checkPasswordMatch() {
 	  document.getElementById("password").focus();
 	}
 }
+
+function redirectToPage(element) {
+	var id = element.getAttribute("ticket_id");
+  
+	// Redirecionar para outra página passando o ID como parâmetro
+	window.location.href = "../pages/detailsTicket.php?id=" + id;
+}

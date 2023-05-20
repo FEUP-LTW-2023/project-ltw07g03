@@ -39,7 +39,7 @@
         <input type="email" id="email" name="email" placeholder="E-mail" required>
         <input type="password" id="password" name="password" placeholder="Palavra-passe" required>
         <input type="password" id="password_check" name="password_check" placeholder="Confirme a palavra-passe" onblur="checkPasswordMatch()" required>
-        <input type="hidden" id="name" name="name" value=<?= $name ?> >
+        <input type="hidden" id="name" name="name" value="<?= $name ?>">
         <input type="hidden" id="username" name="username" value=<?= $username ?> >
         <input type="submit" value="Criar Conta">
     </form>

@@ -10,8 +10,6 @@
     require_once(__DIR__ .'/../utils/session.php');
     include_once(ROOT . '/Database/connection.php'); 
     include_once(ROOT . '/Database/user.class.php');  
-    include_once(ROOT . '/templates/register.tpl.php');  
-    require_once(__DIR__ . '/../templates/common.tpl.php');
     
     $session = new Session();
 
@@ -25,6 +23,6 @@
     $db = getDatabaseConnection();
 
     User::addUser(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['username']), htmlspecialchars($_POST['pwd']), htmlspecialchars($_POST['email']), $db);
-        header('Location: ../pages/edit_profile.php');
+        header('Location: ../pages/login_page.php');
     
 ?>

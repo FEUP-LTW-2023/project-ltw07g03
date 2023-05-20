@@ -5,9 +5,9 @@
     public int $id_ticket;
     public int $id_user;
     public string $the_subject;
-    public int $id_department;
     public string $ticket_date;
     public int $id_hashtag;
+    public int $id_department;
     public int $id_assigned_agent;
     public int $id_status;
     public string $message;
@@ -108,33 +108,34 @@ public static function getClientTickets($userId, $db)
    return $tickets;
 }
 
-public static function getTicketById($ticketId, $db)
-{
-    $query = "SELECT * FROM Tickets WHERE id_ticket = :ticketId";
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(':ticketId', $ticketId, PDO::PARAM_INT);
-    $stmt->execute();
+public static function getTicketById($ticket_id, PDO $db) : ?Ticket {
 
-    $ticketData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $query = "SELECT * FROM Tickets WHERE id_ticket = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$ticket_id]);
+
+    $ticketData = $stmt->fetch();
 
     if ($ticketData === false) {
         return null; // Ticket não encontrado
     }
-
-    $ticket = new Ticket();
-    $ticket->setId($ticketData['id_ticket']);
-    $ticket->setUserId($ticketData['id_user']);
-    $ticket->setSubject($ticketData['the_subject']);
-    $ticket->setDepartmentId($ticketData['id_department']);
-    $ticket->setTimestamp($ticketData['ticket_date']);
-    $ticket->setHashtagId($ticketData['id_hashtag']);
-    $ticket->setAgentId($ticketData['id_assigned_agent']);
-    $ticket->setStatus($ticketData['id_status']);
-    $ticket->setMessage($ticketData['message']);
-    $ticket->setPriority($ticketData['priority']);
+    
+    $ticket = new Ticket(
+        $ticketData['id_ticket'],
+        $ticketData['id_user'],
+        $ticketData['the_subject'],
+        $ticketData['ticket_date'],
+        $ticketData['id_hashtag'],
+        $ticketData['id_department'],
+        $ticketData['id_assigned_agent'],
+        $ticketData['id_status'],
+        $ticketData['message'],
+        $ticketData['id_priority']
+    );
 
     return $ticket;
 }
+
 
 public static function getStatus($id_status, $db)
 {
@@ -172,6 +173,22 @@ public static function getDepartament($id_department, $db)
 
     // Caso o departamento não seja encontrado
     return "Departamento não encontrado para o ID fornecido";
+}
+
+public static function getMessageTicket($ticket_id, PDO $db)
+{
+    $query = "SELECT * FROM TicketMessages WHERE ticket_id  = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array(':id' => $ticket_id));
+    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $messages;
+}
+
+static function addMessage($ticket_id, $message_text, $sender, $db){
+
+    $stmt = $db->prepare('INSERT INTO TicketMessages(ticket_id, message_text, sender) VALUES (?, ?, ?);');
+    $stmt->execute(array($ticket_id, $message_text, $sender));
 }
 
 }

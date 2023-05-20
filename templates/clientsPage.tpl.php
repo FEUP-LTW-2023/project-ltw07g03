@@ -12,7 +12,7 @@
     <head>
         <meta charset="utf-8">    
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Editar Perfil</title>
+        <title>Tech Wave</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
@@ -35,12 +35,13 @@
 
 <?php function drawClientPage(User $user, array $tickets, $db) { ?>
 
-<div class="grid-container">
-        <div class="item-1">    
-        </div>
+    <div class="grid-container">
+    <div class="item-1">
+    </div>
 
-        <div class="item-2">
-            <h2>📋 Meus Tickets</h2>
+    <div class="item-2">
+        <h2>📋 Meus Tickets</h2>
+        <div class="table-container">
             <table class="client_ticket">
                 <thead class="top-table">
                     <tr>
@@ -51,27 +52,46 @@
                     </tr>
                 </thead>
                 <tbody class="body-table">
-                    <?php 
-                    // Para cada ticket, obtém os detalhes completos usando getTicketById
-                    foreach ($tickets as $ticket) {
-                        $ticketId = $ticket['id_ticket'];
-                    ?>
-                        <tr>
-                            <td class="table-data"><?= $ticket['the_subject'];?></td>
-                            <td class="table-data"><?= Ticket::getDepartament($ticket['id_department'],$db);?></td>
-                            <td class="table-data"><?= Ticket::getDate($ticketId, $db); ?></td>
-                            <td class="table-data"><?= Ticket::getStatus($ticket['id_status'],$db);?></td>
-                        </tr> 
+                    <?php foreach ($tickets as $ticket) { ?>
+                        <tr onclick="redirectToPage(this)" ticket_id="<?= $ticket['id_ticket']; ?>">
+                            <td class="table-data"><?= $ticket['the_subject']; ?></td>
+                            <td class="table-data"><?= Ticket::getDepartament($ticket['id_department'], $db); ?></td>
+                            <td class="table-data"><?= Ticket::getDate($ticket['id_ticket'], $db); ?></td>
+                            <td class="table-data"><?= Ticket::getStatus($ticket['id_status'], $db); ?></td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <p><?= count($tickets); ?> Tickets</p>
         </div>
-
-        <div class="item-3">
-            
-        </div>
+        <p><?= count($tickets); ?> Tickets</p>
     </div>
-</div>
+
+    <div class="item-3">
+
+    </div>
+    </div>
+
+    <style>
+    /* Estilos para dispositivos móveis */
+    @media screen and (max-width: 768px) {
+        .grid-container {
+            display: block;
+        }
+
+        .item-1,
+        .item-2,
+        .item-3 {
+            width: 100%;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .client_ticket {
+            width: 100%;
+        }
+    }
+    </style>
 
 <?php } ?>

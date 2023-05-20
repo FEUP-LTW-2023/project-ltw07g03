@@ -64,5 +64,5 @@
   }
 }
 
-  header('Location: ../index.php');
+  header('Location: ../pages/clientsPage.php');
 ?>

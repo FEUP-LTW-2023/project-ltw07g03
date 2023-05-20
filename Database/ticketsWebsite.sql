@@ -71,7 +71,7 @@ CREATE TABLE Hashtag (
 );
 
 CREATE TABLE TicketMessages (
-  id_message INT AUTO_INCREMENT PRIMARY KEY,
+  id_message INTEGER PRIMARY KEY,
   ticket_id INTEGER NOT NULL,
   message_text TEXT,
   sender TEXT NOT NULL,
@@ -114,7 +114,7 @@ INSERT INTO Hashtag VALUES (4, 'sugestão');
 INSERT INTO Hashtag VALUES (5, 'reclamação');
 
 INSERT INTO Tickets VALUES(1, 2, 'Atendimento Terrível', '2023-05-17 14:30:21', 5, 5, 1, 1,'Gostaria de registrar uma reclamação sobre a má qualidade de atendimento que recebi recentemente. O atendimento foi pouco profissional e não atendeu às minhas expectativas. Solicito que essa questão seja analisada e medidas sejam tomadas para melhorar a qualidade do serviço prestado.', 1);
-INSERT INTO Tickets VALUES(2, 2, 'Incidente de segurança', '2023-05-17 14:30:21', 1, 2, 2, 1,'Gostaria de relatar um incidente de segurança em nosso sistema. Detectamos um possível ataque cibernético e estamos preocupados com a proteção de nossos dados. Por favor, nos forneça assistência imediata para resolver esse problema e fortalecer nossas defesas.', 3);
+INSERT INTO Tickets VALUES(2, 6, 'Incidente de segurança', '2023-05-17 14:30:21', 1, 2, 2, 1,'Gostaria de relatar um incidente de segurança em nosso sistema. Detectamos um possível ataque cibernético e estamos preocupados com a proteção de nossos dados. Por favor, nos forneça assistência imediata para resolver esse problema e fortalecer nossas defesas.', 3);
 
 INSERT INTO TicketMessages VALUES(1, 1, 'Lamentamos a sua má experiência. Pode nos contar mais detalhes sobre o que aconteceu?', 'Rúben Amorim', '2023-05-18 13:33:19');
-INSERT INTO TicketMessages VALUES(2, 6, 'Não quero compartilhar detalhes.', 'rogerslb1904', '2023-05-18 13:33:19');
+INSERT INTO TicketMessages VALUES(2, 1, 'Não quero compartilhar detalhes.', 'João Miranda', '2023-05-18 13:51:15');

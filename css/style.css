@@ -307,13 +307,14 @@ tr, td, th {
 
 th {
     font: 530 1em Poppins;
-    padding: 20px 0px 20px 20px;
+    padding: 20px;
     color:#3b3939;
 }
 
 tbody tr:hover{
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 tbody > tr:nth-child(odd){
