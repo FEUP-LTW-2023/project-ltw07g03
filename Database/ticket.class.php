@@ -249,5 +249,13 @@ static function addMessage($ticket_id, $message_text, $sender, $db){
     $stmt->execute(array($ticket_id, $message_text, $sender));
 }
 
+function saveDepartment(PDO $db) {
+    $stmt = $db->prepare('
+      UPDATE Tickets SET id_department = ?
+      WHERE id_ticket = ?
+    ');
+
+    $stmt->execute(array($this->id_department, $this->id_ticket));
+  }
 }
 ?>

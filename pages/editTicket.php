@@ -5,22 +5,19 @@
   $session = new Session();
 
   require_once(__DIR__ . '/../Database/connection.php');
+
   require_once(__DIR__ . '/../Database/user.class.php');
   require_once(__DIR__ . '/../Database/ticket.class.php');
 
   require_once(__DIR__ . '/../templates/common.tpl.php');
-  require_once(__DIR__ . '/../templates/detailsTicket.tpl.php');
-  require_once(__DIR__ . '/../templates/messageTickets.tpl.php');
-  require_once(__DIR__ . '/../templates/clientsPage.tpl.php');
+  require_once(__DIR__ . '/../templates/editTicket.tpl.php');
 
   $db = getDatabaseConnection();
   $user = User::checkUser($db, $_SESSION['id']);
-  $name = $user->name;
   $ticket_id = $_GET['id'];
-  $messages = Ticket::getMessageTicket($ticket_id, $db);
 
-  drawHeaderClientPage($user);
-  drawDetailsTicket($user, $ticket_id, $db);
-  drawMessageTickets($name, $ticket_id, $messages, $db);
+
+  drawHeader();
+  drawEditTicket($ticket_id, $session, $db);
   drawFooter(); 
 ?>

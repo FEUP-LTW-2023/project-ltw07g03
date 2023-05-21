@@ -64,5 +64,17 @@
   }
 }
 
-  header('Location: ../pages/clientsPage.php');
+if ($user){
+  $_SESSION['username'] = $user->username;
+  $_SESSION['id'] = $user->id_user;
+
+  if ($user->category === "agent") {
+      header('Location: ../pages/agentsPage.php');
+  } elseif ($user->category === "admin") {
+      header('Location: ../pages/agentsPage.php');
+  } else {
+      header('Location: ../pages/clientsPage.php');
+  }
+  exit();
+}
 ?>

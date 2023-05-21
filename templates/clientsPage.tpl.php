@@ -23,7 +23,11 @@
                 <button class="username">Olá, <?= $user->name; ?>!</button>
                 <div class="dropdown-content">
                     <a href = "../pages/edit_profile.php">Editar Perfil</a><br>
-                    <a href = "../pages/NewTicket.php" >Criar Novo Ticket</a><br>
+                    <a href = "../pages/newTicket.php" >Criar Novo Ticket</a><br>
+                    <a href = "../pages/clientsPage.php" >Meus Tickets</a><br>
+                    <?php if ($user->category === "agent" || $user->category === "admin" ) { ?>
+                        <a href = "../pages/agentsPage.php" >Página do Agente</a><br>
+                    <?php } ?>
                     <form action="../actions/action_logout.php" method="post" class="logout">
                         <button class="client-page" type="submit">Logout</button>
                     </form>

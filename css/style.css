@@ -309,6 +309,7 @@ th {
     font: 530 1em Poppins;
     padding: 20px;
     color:#3b3939;
+    min-width: 70px;
 }
 
 tbody tr:hover{

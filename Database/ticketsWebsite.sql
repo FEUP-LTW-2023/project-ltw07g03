@@ -114,8 +114,11 @@ INSERT INTO Hashtag VALUES (3, 'dúvida');
 INSERT INTO Hashtag VALUES (4, 'sugestão');
 INSERT INTO Hashtag VALUES (5, 'reclamação');
 
-INSERT INTO Tickets VALUES(1, 2, 'Atendimento Terrível', '2023-05-17 14:30:21', 5, 5, 1, 1,'Gostaria de registrar uma reclamação sobre a má qualidade de atendimento que recebi recentemente. O atendimento foi pouco profissional e não atendeu às minhas expectativas. Solicito que essa questão seja analisada e medidas sejam tomadas para melhorar a qualidade do serviço prestado.', 1);
+INSERT INTO Tickets VALUES(1, 2, 'Atendimento Terrível', '2023-05-17 14:30:21', 5, 5, 4, 1,'Gostaria de registrar uma reclamação sobre a má qualidade de atendimento que recebi recentemente. O atendimento foi pouco profissional e não atendeu às minhas expectativas. Solicito que essa questão seja analisada e medidas sejam tomadas para melhorar a qualidade do serviço prestado.', 1);
 INSERT INTO Tickets VALUES(2, 6, 'Incidente de segurança', '2023-05-17 14:30:21', 1, 2, 2, 1,'Gostaria de relatar um incidente de segurança em nosso sistema. Detectamos um possível ataque cibernético e estamos preocupados com a proteção de nossos dados. Por favor, nos forneça assistência imediata para resolver esse problema e fortalecer nossas defesas.', 3);
+INSERT INTO Tickets VALUES(3, 2, 'Atendimento demorado ao telefone', '2023-05-21 10:32:56', 4, 5, 4, 1, 'Prezados, venho por meio deste solicitar uma melhoria no tempo de espera ao ligar para o suporte técnico. Nas últimas vezes em que entrei em contato, esperei por mais de 30 minutos antes de ser atendido. Isso é bastante inconveniente e gostaria que esse tempo fosse reduzido. Aguardo uma resposta positiva.', 1);
+INSERT INTO Tickets VALUES(4, 2, 'Suporte por e-mail', '2023-05-21 10:33:52', 3, 5, 4, 1, 'Caro atendimento ao cliente, tenho tentado obter suporte por e-mail, mas não recebi nenhuma resposta até o momento. Enviei minha solicitação há uma semana e estou aguardando um retorno. Gostaria que minha questão fosse analisada o mais breve possível e que eu recebesse uma resposta adequada. Obrigado pela atenção.', 2);
 
-INSERT INTO TicketMessages VALUES(1, 1, 'Lamentamos a sua má experiência. Pode nos contar mais detalhes sobre o que aconteceu?', 'Rúben Amorim', '2023-05-18 13:33:19');
+
+INSERT INTO TicketMessages VALUES(1, 1, 'Lamentamos a sua má experiência. Pode nos contar mais detalhes sobre o que aconteceu?', 'Amanda Silva', '2023-05-18 13:33:19');
 INSERT INTO TicketMessages VALUES(2, 1, 'Não quero compartilhar detalhes.', 'João Miranda', '2023-05-18 13:51:15');
