@@ -24,4 +24,12 @@
   drawHeaderClientPage($user);
   drawAgentPage($user, $tickets, $db);
   drawFooter(); 
+
+  $filters = [
+    'assigned_agent' => $_SESSION['id'], 
+    'status' => 'open', 'assigned', 'closed',
+    'priority' => 'high', 'medium', 'low'  
+  ];
+
+$tickets = Agent::getDepartmentTickets($departmentId, $db, $filters);
 ?>

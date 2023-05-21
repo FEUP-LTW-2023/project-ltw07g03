@@ -49,6 +49,31 @@
             // Caso não seja encontrado
             return "Utilizador não encontrado para o ID fornecido";
         }
-    }
+
+        static function getDepartmentTickets($departmentId, $db, $filters = []) {
+            $query = 'SELECT * FROM Tickets WHERE id_department = ?';
+            $params = [$departmentId];
     
+            // Apply filters
+            if (isset($filters['assigned_agent'])) {
+                $query .= ' AND id_assigned_agent = ?';
+                $params[] = $filters['assigned_agent'];
+            }
+            if (isset($filters['status'])) {
+                $query .= ' AND id_status = ?';
+                $params[] = $filters['status'];
+            }
+            if (isset($filters['priority'])) {
+                $query .= ' AND id_priority = ?';
+                $params[] = $filters['priority'];
+            }
+            // Add more filters as needed
+    
+            $stmt = $db->prepare($query);
+            $stmt->execute($params);
+            $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $tickets;
+        }
+    }
 ?> 
