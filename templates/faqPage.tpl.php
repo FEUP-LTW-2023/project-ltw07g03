@@ -6,34 +6,7 @@
     require_once(__DIR__ . '/../Database/ticket.class.php');
 ?>
 
-<?php function drawHeaderClientPage(User $user) { ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">    
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Página de FAQ</title>
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
-    </head>
-    <body>
-    <header>
-        <nav>
-            <a href=""><img id="logo" src="/imagens/logo.png" alt=logo></a>
-            <div class="dropdown">
-                <button class="username">Olá, <?= $user->name; ?>!</button>
-                <div class="dropdown-content">
-                    <a href = "../pages/edit_profile.php">Editar Perfil</a><br>
-                    <a href = "../pages/NewTicket.php" >Criar Novo Ticket</a><br>
-                    <form action="../actions/action_logout.php" method="post" class="logout">
-                        <button class="client-page" type="submit">Logout</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
-<?php } ?>
-
-<?php function drawClientPage(User $user, array $tickets, $db) { ?>
+<?php function drawFAQPage(User $user, array $tickets, $db) { ?>
 
     <div class="grid-container">
     <div class="text-center">

@@ -108,6 +108,26 @@ public static function getClientTickets($userId, $db)
    return $tickets;
 }
 
+public static function getDepartamentTickets($id_department, $db)
+{
+    $query = "SELECT id_ticket, the_subject, ticket_date, id_hashtag, id_assigned_agent, id_status, id_priority FROM Tickets WHERE id_department = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array($id_department));
+    $tickets = array();
+    while($ticket = $stmt->fetch()){
+        $ticketAtributes = array();
+        $ticketAtributes['id_ticket'] = $ticket['id_ticket'];
+        $ticketAtributes['the_subject'] = $ticket['the_subject'];
+        $ticketAtributes['ticket_date'] = $ticket['ticket_date'];
+        $ticketAtributes['id_hashtag'] = $ticket['id_hashtag'];
+        $ticketAtributes['id_assigned_agent'] = $ticket['id_assigned_agent'];
+        $ticketAtributes['id_status'] = $ticket['id_status'];
+        $ticketAtributes['id_priority'] = $ticket['id_priority'];
+        $tickets[] = $ticketAtributes;
+    }
+   return $tickets;
+}
+
 public static function getTicketById($ticket_id, PDO $db) : ?Ticket {
 
     $query = "SELECT * FROM Tickets WHERE id_ticket = ?";
@@ -173,6 +193,44 @@ public static function getDepartament($id_department, $db)
 
     // Caso o departamento não seja encontrado
     return "Departamento não encontrado para o ID fornecido";
+}
+
+public static function getPriority($id_priority, $db)
+{
+    // Consultar o banco de dados para obter o valor do campo department_name
+    $query = "SELECT priority_name FROM Priority WHERE id_priority = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array(':id' => $id_priority));
+    $result = $stmt->fetch();
+
+    if ($result !== false) {
+        // Obter o valor do campo 
+        $priority_name = $result['priority_name'];
+
+        return $priority_name;
+    }
+
+    // Casonão seja encontrado
+    return "Nível de prioridade não encontrado para o ID fornecido";
+}
+
+public static function getHashtag($id_hashtag, $db)
+{
+    // Consultar o banco de dados para obter o valor do campo department_name
+    $query = "SELECT hashtag_name FROM Hashtag WHERE id_hashtag = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute(array(':id' => $id_hashtag));
+    $result = $stmt->fetch();
+
+    if ($result !== false) {
+        // Obter o valor do campo department_name
+        $hashtag_name = $result['hashtag_name'];
+
+        return $hashtag_name;
+    }
+
+    // Caso não seja encontrado
+    return "Categoria não encontrado para o ID fornecido";
 }
 
 public static function getMessageTicket($ticket_id, PDO $db)

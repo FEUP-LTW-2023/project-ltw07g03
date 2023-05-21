@@ -83,6 +83,23 @@
             return FALSE;
     }
 
+    static function checkName($id_user, $db) {
+        $query =  'SELECT name FROM Users WHERE id_user = ?';
+        $stmt = $db->prepare($query);
+        $stmt->execute(array($id_user));
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user !== false) {
+            // Obter o valor do campo name
+            $name = $user['name'];
+    
+            return $name;
+        }
+    
+        // Caso não seja encontrado
+        return "Nome de usuário não encontrado para o ID fornecido";
+    }
+
     function changeUsername($db){
         $stmt = $db->prepare('
         UPDATE Users SET username = ?

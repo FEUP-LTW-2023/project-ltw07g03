@@ -66,8 +66,8 @@ CREATE TABLE Priority (
 );
 
 CREATE TABLE Hashtag (
-    id_hastag INTEGER PRIMARY KEY,
-    hastag_name TEXT NOT NULL
+    id_hashtag INTEGER PRIMARY KEY,
+    hashtag_name TEXT NOT NULL
 );
 
 CREATE TABLE TicketMessages (
@@ -80,11 +80,12 @@ CREATE TABLE TicketMessages (
 );
 
 INSERT INTO Users VALUES(1, 'Amanda Silva', 'amandasilva02', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'amandasilva@xyz.com', 'admin');
-INSERT INTO Users VALUES(2, 'João Miranda', 'joaom2211', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'joaomiranda@xyz.com', 'admin');
+INSERT INTO Users VALUES(2, 'João Miranda', 'joaom2211', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'joaomiranda@xyz.com', 'client');
 INSERT INTO Users VALUES(3, 'Maria Beatriz Carneiro', 'beacarneiro058', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'beatrizcarneiro@xyz.com', 'admin');
 INSERT INTO Users VALUES(4, 'Sérgio Conceição', 'sergiofcp1893', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'sergioconceicao@xyz.com', 'agent');
 INSERT INTO Users VALUES(5, 'Rúben Amorim', 'rubenscp1906', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rubenamorim@xyz.com', 'agent');
 INSERT INTO Users VALUES(6, 'Roger Schmidt', 'rogerslb1904', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rogerschimdt@xyz.com', 'agent');
+INSERT INTO Users VALUES(7, 'Fabiane Nelo', 'fabi234', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'fabi.nelo@xyz.com', 'agent');
 
 INSERT INTO Departments VALUES(1, 'Contabilidade');
 INSERT INTO Departments VALUES(2, 'Suporte Técnico');
@@ -93,10 +94,10 @@ INSERT INTO Departments VALUES(4, 'Vendas');
 INSERT INTO Departments VALUES(5, 'Serviço de Atendimento ao Cliente');
 INSERT INTO Departments VALUES(6, 'Geral');
 
-INSERT INTO Agents VALUES(1, 2, 5);
+INSERT INTO Agents VALUES(1, 7, 1);
 INSERT INTO Agents VALUES(2, 5, 2);
 INSERT INTO Agents VALUES(3, 6, 3);
-INSERT INTO Agents VALUES(4, 1, 1);
+INSERT INTO Agents VALUES(4, 1, 5);
 INSERT INTO Agents VALUES(5, 3, 4);
 INSERT INTO Agents VALUES(6, 4, 6);
 
