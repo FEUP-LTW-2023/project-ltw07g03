@@ -21,7 +21,7 @@
   $ticket_id = $_GET['id'];
   $ticket = Ticket::getTicketById($ticket_id, $db);
 
-  if ($ticket&& null !== htmlspecialchars($_POST['id_department'])) {
+  if ($ticket && isset($_POST['id_department'])) {
     $newDepartment = intval($_POST['id_department']);
     if (!empty($newDepartment)) {
 
@@ -29,6 +29,21 @@
         $ticket->saveDepartment($db);
     
         $session->addMessage('success', 'Departamento do ticket atualizado');
+        header('Location: ../pages/detailsTicket.php?id='.urlencode($ticket_id));
+    } else {
+    $session->addMessage('error', 'Ticket não encontrado');
+    header('Location: ../pages/agentsPage.php');
+    }
+  }
+
+  if ($ticket && isset($_POST['id_status'])) {
+    $newStatus = intval($_POST['id_status']);
+    if (!empty($newStatus)) {
+
+        $ticket->id_status = $newStatus;
+        $ticket->saveStatus($db);
+    
+        $session->addMessage('success', 'Estado do ticket atualizado');
         header('Location: ../pages/detailsTicket.php?id='.urlencode($ticket_id));
     } else {
     $session->addMessage('error', 'Ticket não encontrado');

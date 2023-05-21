@@ -256,6 +256,16 @@ function saveDepartment(PDO $db) {
     ');
 
     $stmt->execute(array($this->id_department, $this->id_ticket));
-  }
+}
+
+function saveStatus(PDO $db) {
+    $stmt = $db->prepare('
+      UPDATE Tickets SET id_status = ?
+      WHERE id_ticket = ?
+    ');
+
+    $stmt->execute(array($this->id_status, $this->id_ticket));
+}
+
 }
 ?>
