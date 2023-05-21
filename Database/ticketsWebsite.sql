@@ -103,10 +103,12 @@ INSERT INTO Agents VALUES(6, 4, 6);
 
 INSERT INTO Status VALUES(1, 'aberto');
 INSERT INTO Status VALUES(2, 'fechado');
+INSERT INTO Status VALUES(3, 'assigned');
 
 INSERT INTO Priority VALUES(1, 'normal');
 INSERT INTO Priority VALUES(2, 'urgente');
 INSERT INTO Priority VALUES(3, 'muito urgente');
+INSERT INTO Priority VALUES(4, 'baixa');
 
 INSERT INTO Hashtag VALUES (1, 'pedido');
 INSERT INTO Hashtag VALUES (2, 'elogio');
