@@ -27,8 +27,8 @@
 
   $filters = [
     'assigned_agent' => $_SESSION['id'], 
-    'status' => 'open', 'assigned', 'closed',
-    'priority' => 'high', 'medium', 'low'  
+    'status' => 'aberto', 'assigned', 'fechado',
+    'priority' => 'muito urgente', 'urgente', 'alta', 'normal', 'baixa' 
   ];
 
 $tickets = Agent::getDepartmentTickets($departmentId, $db, $filters);
