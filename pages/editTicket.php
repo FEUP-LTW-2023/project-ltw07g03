@@ -15,9 +15,10 @@
   $db = getDatabaseConnection();
   $user = User::checkUser($db, $_SESSION['id']);
   $ticket_id = $_GET['id'];
-
+  $ticket = Ticket::getTicketById($ticket_id, $db);
+  $agents = Agent::getAgentsByDepartment($ticket->id_department, $db);
 
   drawHeader();
-  drawEditTicket($ticket_id, $session, $db);
+  drawEditTicket($ticket_id, $session, $agents, $db);
   drawFooter(); 
 ?>

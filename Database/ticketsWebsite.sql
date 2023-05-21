@@ -86,6 +86,9 @@ INSERT INTO Users VALUES(4, 'Sérgio Conceição', 'sergiofcp1893', '$2y$10$BMHv
 INSERT INTO Users VALUES(5, 'Rúben Amorim', 'rubenscp1906', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rubenamorim@xyz.com', 'agent');
 INSERT INTO Users VALUES(6, 'Roger Schmidt', 'rogerslb1904', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'rogerschimdt@xyz.com', 'agent');
 INSERT INTO Users VALUES(7, 'Fabiane Nelo', 'fabi234', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'fabi.nelo@xyz.com', 'agent');
+INSERT INTO Users VALUES(8, 'Naomi Lets', 'naomi_le', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'naomi@xyz.com', 'agent');
+INSERT INTO Users VALUES(9, 'Carmem Melo', 'carmelo', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'carmem@xyz.com', 'agent');
+
 
 INSERT INTO Departments VALUES(1, 'Contabilidade');
 INSERT INTO Departments VALUES(2, 'Suporte Técnico');
@@ -100,6 +103,8 @@ INSERT INTO Agents VALUES(3, 6, 3);
 INSERT INTO Agents VALUES(4, 1, 5);
 INSERT INTO Agents VALUES(5, 3, 4);
 INSERT INTO Agents VALUES(6, 4, 6);
+INSERT INTO Agents VALUES(7, 8, 5);
+INSERT INTO Agents VALUES(8, 9, 5);
 
 INSERT INTO Status VALUES(1, 'aberto');
 INSERT INTO Status VALUES(2, 'fechado');

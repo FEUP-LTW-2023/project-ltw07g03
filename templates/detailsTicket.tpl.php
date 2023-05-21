@@ -4,6 +4,7 @@
   require_once(__DIR__ . '/../utils/session.php');
   require_once(__DIR__ . '/../Database/user.class.php');
   require_once(__DIR__ . '/../Database/ticket.class.php');
+  require_once(__DIR__ . '/../Database/agent.class.php');
 ?>
 
 <?php function drawDetailsTicket($user, $ticket_id, $db) { ?>
@@ -21,6 +22,7 @@
             <p>Estado: <span id="ticket-status"><?= Ticket::getStatus($ticket->id_status, $db); ?></span></p>
             <p>Prioridade: <span id="ticket-priority"><?= Ticket::getPriority($ticket->id_priority, $db); ?></span></p>
             <p>Categoria: <span id="ticket-hashtag"><?= Ticket::getHashtag($ticket->id_hashtag, $db); ?></span></p>
+            <p>Agente responsável: <span id="ticket-agent"><?= User::checkName(Agent::getAgentUser($ticket->id_assigned_agent, $db), $db); ?></span></p>
             <p>Mensagem: <span id="ticket-message"><?=$ticket->message?></span></p>
             <?php if ($user->category === "agent" || $user->category === "admin" ) { ?>
                 <button><a href="../pages/editTicket.php?id=<?= $ticket_id ?>">Editar Informações do Ticket</a></button><br>

@@ -49,6 +49,24 @@
             // Caso não seja encontrado
             return "Utilizador não encontrado para o ID fornecido";
         }
+
+        public static function getAgentsByDepartment($departmentId, $db)
+        {
+            $query = "SELECT id_agent FROM Agents WHERE id_department = :departmentId";
+            
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':departmentId', $departmentId, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $agents = [];
+            
+            while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $agents[] = (int) $result['id_agent'];
+            }
+            
+            return $agents;
+        }
+
     }
     
 ?> 

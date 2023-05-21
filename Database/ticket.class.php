@@ -197,7 +197,7 @@ public static function getDepartament($id_department, $db)
 
 public static function getPriority($id_priority, $db)
 {
-    // Consultar o banco de dados para obter o valor do campo department_name
+    // Consultar o banco de dados para obter o valor do campo 
     $query = "SELECT priority_name FROM Priority WHERE id_priority = :id";
     $stmt = $db->prepare($query);
     $stmt->execute(array(':id' => $id_priority));
@@ -216,14 +216,14 @@ public static function getPriority($id_priority, $db)
 
 public static function getHashtag($id_hashtag, $db)
 {
-    // Consultar o banco de dados para obter o valor do campo department_name
+    // Consultar o banco de dados para obter o valor do campo
     $query = "SELECT hashtag_name FROM Hashtag WHERE id_hashtag = :id";
     $stmt = $db->prepare($query);
     $stmt->execute(array(':id' => $id_hashtag));
     $result = $stmt->fetch();
 
     if ($result !== false) {
-        // Obter o valor do campo department_name
+        // Obter o valor do campo
         $hashtag_name = $result['hashtag_name'];
 
         return $hashtag_name;
@@ -265,6 +265,15 @@ function saveStatus(PDO $db) {
     ');
 
     $stmt->execute(array($this->id_status, $this->id_ticket));
+}
+
+function saveAgent(PDO $db) {
+    $stmt = $db->prepare('
+      UPDATE Tickets SET id_assigned_agent = ?
+      WHERE id_ticket = ?
+    ');
+
+    $stmt->execute(array($this->id_assigned_agent, $this->id_ticket));
 }
 
 }
