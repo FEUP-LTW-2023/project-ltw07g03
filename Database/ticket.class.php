@@ -276,5 +276,24 @@ function saveAgent(PDO $db) {
     $stmt->execute(array($this->id_assigned_agent, $this->id_ticket));
 }
 
+function saveHashtag(PDO $db) {
+    $stmt = $db->prepare('
+      UPDATE Tickets SET id_hashtag = ?
+      WHERE id_ticket = ?
+    ');
+
+    $stmt->execute(array($this->id_hashtag, $this->id_ticket));
+}
+
+// public static function getTicketHistory($ticket_id, $db)
+// {
+//     $query = "SELECT * FROM TicketHistory WHERE id_ticket = ?";  
+//     $stmt = $db->prepare($query);
+//     $stmt->execute(array(':id' => $ticket_id));
+//     $history = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+//     return $history;
+// }
+
 }
 ?>

@@ -6,11 +6,11 @@
     require_once(__DIR__ . '/../Database/ticket.class.php');
 ?>
 
-<?php function drawFAQPage(User $user, array $tickets, $db) { ?>
+<?php function drawFAQPage() { ?>
 
-    <div class="grid-container">
+    <div class="container">
     <div class="text-center">
-      <p class="h1 text-uppercase text-white text-shadow: 2px 2px 4px #000000 font-weight-bold">Perguntas
+      <p class="h1">Perguntas
         Frequentes</p>
     </div>
 

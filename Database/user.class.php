@@ -136,5 +136,19 @@
 
       $stmt->execute(array($this->pwd, $this->id_user));
     }
+
+    static function getAllUsers($db) {
+        $query = "SELECT * FROM users";
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $users;
+    }
+
+    static function changeCategory($db, $id_user, $newCategory) {
+        $stmt = $db->prepare('UPDATE Users SET category = ? WHERE id_user = ?');
+        $stmt->execute([$newCategory, $id_user]);
+    }
 }
 ?> 

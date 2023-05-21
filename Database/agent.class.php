@@ -67,6 +67,31 @@
             return $agents;
         }
 
+        public static function getUserAgent($id_user, $db) {
+            
+            // Consultar o banco de dados
+            $query = "SELECT id_agent FROM Agents WHERE id_user = ?";
+            $stmt = $db->prepare($query);
+            $stmt->execute(array($id_user));
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            if ($result !== false) {
+                // Obter o valor do campo 
+                $id_agent = $result['id_agent'];
+        
+                return $id_agent;
+            }
+        
+            // Caso não seja encontrado
+            return "Utilizador não encontrado para o ID fornecido";
+        }
+
+        
+        static function changeDepartment($db, $id_user, $new_department) {
+            $stmt = $db->prepare('UPDATE Agents SET id_department = ? WHERE id_user = ?');
+            $stmt->execute([$new_department, $id_user]);
+        }
+
     }
     
 ?> 

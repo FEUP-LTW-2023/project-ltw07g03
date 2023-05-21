@@ -16,13 +16,10 @@
   $db = getDatabaseConnection();
 
   $user = User::checkUser($db, $_SESSION['id']);
-  $userId = $user->id_user;
-  $agent = Agent::checkAgent($db, $userId);
-  $departmentId = $agent->id_department;
-  $tickets = Ticket::getDepartamentTickets($departmentId, $db);
+  $utilizadores = User::getAllusers($db);
     
   drawHeaderClientPage($user);
-  drawAgentPage($user, $tickets, $db);
+  drawAdminPage($utilizadores, $db);
   drawFooter(); 
 
 ?>

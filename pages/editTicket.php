@@ -11,6 +11,7 @@
 
   require_once(__DIR__ . '/../templates/common.tpl.php');
   require_once(__DIR__ . '/../templates/editTicket.tpl.php');
+  require_once(__DIR__ . '/../templates/clientsPage.tpl.php');
 
   $db = getDatabaseConnection();
   $user = User::checkUser($db, $_SESSION['id']);
@@ -18,7 +19,8 @@
   $ticket = Ticket::getTicketById($ticket_id, $db);
   $agents = Agent::getAgentsByDepartment($ticket->id_department, $db);
 
-  drawHeader();
+  drawHeaderClientPage($user);
   drawEditTicket($ticket_id, $session, $agents, $db);
+//   drawHistoryTicket($ticket_id, $db);
   drawFooter(); 
 ?>

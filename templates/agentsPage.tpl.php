@@ -43,7 +43,6 @@
 
     </div>
 </div>
-
 <style>
 /* Estilos para dispositivos móveis */
 @media screen and (max-width: 768px) {

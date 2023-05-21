@@ -25,8 +25,12 @@
                     <a href = "../pages/edit_profile.php">Editar Perfil</a><br>
                     <a href = "../pages/newTicket.php" >Criar Novo Ticket</a><br>
                     <a href = "../pages/clientsPage.php" >Meus Tickets</a><br>
+                    <a href = "../pages/faqPage.php" >FAQ</a><br>
                     <?php if ($user->category === "agent" || $user->category === "admin" ) { ?>
                         <a href = "../pages/agentsPage.php" >Página do Agente</a><br>
+                    <?php } ?>
+                    <?php if ($user->category === "admin") { ?>
+                        <a href = "../pages/adminPage.php" >Página do Admin</a><br> 
                     <?php } ?>
                     <form action="../actions/action_logout.php" method="post" class="logout">
                         <button class="client-page" type="submit">Logout</button>
@@ -98,4 +102,90 @@
     }
     </style>
 
+<?php } ?>
+
+<?php function drawAdminPage($utilizadores, $db) { ?>
+    <div class="grid-container">
+    <div class="item-1">
+    </div>
+
+    <div class="item-2">
+        <h2>👨🏼‍💻 Utilizadores </h2>
+        <div class="table-container">
+            <table class="client_ticket">
+                <thead class="top-table">
+                    <tr>
+                        <th class="table-header-left">Utilizadores</th>
+                        <th class="table-header">Categoria</th>
+                        <th class="table-header">Editar Categoria</th>
+                        <th class="table-header">Editar Departamento</th>
+                        <th class="table-header-right"></th>
+                    </tr>
+                </thead>
+                <tbody class="body-table">
+                    <?php foreach ($utilizadores as $utilizador) { ?>
+                        <form action="../actions/actionEditCategory.php" method="post">
+                        <input type="hidden" name="id_user" id="id_user" value="<?= $utilizador['id_user']; ?>">
+                        <tr ?>
+                            <td class="table-data"><?= $utilizador['username']; ?></td>
+                            <td class="table-data"><?= $utilizador['category'];  ?></td>
+                            <td>
+                            <select id="category" name="category" >
+                                <option disabled selected value>Selecione</option>
+                                <option value="client">Cliente</option>
+                                <option value="agent">Agente</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            </td>
+                            <td>
+                            <?php if ($utilizador['category'] !== 'client') { ?>
+                                <input type="hidden" name="id_agent" id="id_agent" value="<?= Agent::getUserAgent($utilizador['id_user'], $db) ?>">
+                                <select id="id_department" name="id_department">
+                                    <option disabled selected value>Selecione</option>
+                                    <option value="1">Contabilidade</option>
+                                    <option value="2">Suporte Técnico</option>
+                                    <option value="3">Faturação</option>
+                                    <option value="4">Vendas</option>
+                                    <option value="5">Serviço de Atendimento ao Cliente</option>
+                                    <option value="6">Geral</option>
+                                </select>
+                            <?php } ?>
+
+                            </td>
+                            <td><input type="submit" value="Guardar"></td>
+                        </tr>
+                        </form>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <p><?= count($utilizadores); ?> Utilizadores </p>
+    </div>
+
+    <div class="item-3">
+    </div>
+  </div>
+
+    <style>
+    /* Estilos para dispositivos móveis */
+    @media screen and (max-width: 768px) {
+        .grid-container {
+            display: block;
+        }
+
+        .item-1,
+        .item-2,
+        .item-3 {
+            width: 100%;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .client_ticket {
+            width: 100%;
+        }
+    }
+    </style>
 <?php } ?>

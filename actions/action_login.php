@@ -31,7 +31,7 @@
         if ($user->category === "agent") {
             header('Location: ../pages/agentsPage.php');
         } elseif ($user->category === "admin") {
-            header('Location: ../pages/agentsPage.php');
+            header('Location: ../pages/adminPage.php');
         } else {
             header('Location: ../pages/clientsPage.php');
         }

@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS Status;
 DROP TABLE IF EXISTS Priority;
 DROP TABLE IF EXISTS Hashtag;
 DROP TABLE IF EXISTS TicketMessages;
+DROP TABLE IF EXISTS TicketHistory;
 
 CREATE TABLE Users (
     id_user INTEGER PRIMARY KEY,
@@ -79,6 +80,18 @@ CREATE TABLE TicketMessages (
   FOREIGN KEY (ticket_id) REFERENCES Tickets(id_ticket)
 );
 
+CREATE TABLE TicketHistory (
+  id_history INTEGER PRIMARY KEY,
+  id_ticket INTEGER NOT NULL,
+  id_agent INTEGER NOT NULL,
+  date_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  field_modified TEXT NOT NULL,
+  old_value INTEGER NOT NULL,
+  new_value INTEGER NOT NULL,
+  FOREIGN KEY (id_ticket) REFERENCES Tickets(id_ticket),
+  FOREIGN KEY (id_agent) REFERENCES Agents(id_agent)
+);
+
 INSERT INTO Users VALUES(1, 'Amanda Silva', 'amandasilva02', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'amandasilva@xyz.com', 'admin');
 INSERT INTO Users VALUES(2, 'João Miranda', 'joaom2211', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'joaomiranda@xyz.com', 'client');
 INSERT INTO Users VALUES(3, 'Maria Beatriz Carneiro', 'beacarneiro058', '$2y$10$BMHv284hO/V1hjbO9GU7serupaWBKZD0blzu6bVrZaZFNAxsiGKPa', 'beatrizcarneiro@xyz.com', 'admin');
@@ -124,6 +137,8 @@ INSERT INTO Tickets VALUES(2, 6, 'Incidente de segurança', '2023-05-17 14:30:21
 INSERT INTO Tickets VALUES(3, 2, 'Atendimento demorado ao telefone', '2023-05-21 10:32:56', 4, 5, 4, 1, 'Prezados, venho por meio deste solicitar uma melhoria no tempo de espera ao ligar para o suporte técnico. Nas últimas vezes em que entrei em contato, esperei por mais de 30 minutos antes de ser atendido. Isso é bastante inconveniente e gostaria que esse tempo fosse reduzido. Aguardo uma resposta positiva.', 1);
 INSERT INTO Tickets VALUES(4, 2, 'Suporte por e-mail', '2023-05-21 10:33:52', 3, 5, 4, 1, 'Caro atendimento ao cliente, tenho tentado obter suporte por e-mail, mas não recebi nenhuma resposta até o momento. Enviei minha solicitação há uma semana e estou aguardando um retorno. Gostaria que minha questão fosse analisada o mais breve possível e que eu recebesse uma resposta adequada. Obrigado pela atenção.', 2);
 
-
 INSERT INTO TicketMessages VALUES(1, 1, 'Lamentamos a sua má experiência. Pode nos contar mais detalhes sobre o que aconteceu?', 'Amanda Silva', '2023-05-18 13:33:19');
 INSERT INTO TicketMessages VALUES(2, 1, 'Não quero compartilhar detalhes.', 'João Miranda', '2023-05-18 13:51:15');
+
+INSERT INTO TicketHistory VALUES (1, 1, 1, '2023-05-21 10:43:22', 'id_status', 1, 2);
+INSERT INTO TicketHistory VALUES (2, 1, 1, '2023-05-21 11:23:14', 'id_status', 2, 1);

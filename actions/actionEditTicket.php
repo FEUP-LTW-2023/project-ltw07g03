@@ -66,4 +66,22 @@
             header('Location: ../pages/agentsPage.php');
         }
     }
+
+    if ($ticket && isset($_POST['id_hashtag'])) {
+        $newHashtag = filter_var($_POST['id_hashtag'], FILTER_VALIDATE_INT);
+        
+        if (!empty($newHashtag)) {
+    
+            $ticket->id_hashtag = $newHashtag;
+            $ticket->saveHashtag($db);
+        
+            $session->addMessage('success', 'Categoria do ticket atualizada');
+            header('Location: ../pages/detailsTicket.php?id='.urlencode($ticket_id));
+        } else {
+            $session->addMessage('error', 'Ticket não encontrado');
+            header('Location: ../pages/agentsPage.php');
+        }
+    }
+
+    
 ?>
