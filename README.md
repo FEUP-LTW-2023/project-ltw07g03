@@ -1,1 +1,5 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10522155&assignment_repo_type=AssignmentRepo)
+git clone [<url>](https://github.com/FEUP-LTW-2023/project-ltw07g03.git)
+cd project-ltw07g03
+git checkout final-delivery-v2
+sqlite3 Database/ticketsWebsite.db < Database/ticketsWebsite.sql
+php -S localhost:9000
