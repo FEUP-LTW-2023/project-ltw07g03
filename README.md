@@ -1,4 +1,4 @@
-git clone [<url>](https://github.com/FEUP-LTW-2023/project-ltw07g03.git)
+git clone https://github.com/FEUP-LTW-2023/project-ltw07g03.git
   
 cd project-ltw07g03
   
